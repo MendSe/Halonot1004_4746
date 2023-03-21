@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Halonot1004_4746
 {
-    internal class Class1
+  
+    public class HelpMe
     {
+        public static void Main()
+        {
+            Console.WriteLine("Fuck Lior");
+            string a;
+            a = Console.ReadLine();
+        }
     }
 }
