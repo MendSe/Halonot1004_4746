@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Halonot1004_4746", "Halonot1004_4746\Halonot1004_4746.csproj", "{5CE356CA-2B6E-494F-9380-02D1F95501B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{CBA99F78-A96E-4E03-B33C-265CFDC44E9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5CE356CA-2B6E-494F-9380-02D1F95501B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CE356CA-2B6E-494F-9380-02D1F95501B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CE356CA-2B6E-494F-9380-02D1F95501B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBA99F78-A96E-4E03-B33C-265CFDC44E9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBA99F78-A96E-4E03-B33C-265CFDC44E9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBA99F78-A96E-4E03-B33C-265CFDC44E9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBA99F78-A96E-4E03-B33C-265CFDC44E9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
