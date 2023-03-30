@@ -16,7 +16,7 @@ namespace Sales
             IGDBApi igdbClient = new IGDBApi(ClientID, SecretID);
 
             Console.Write("Enter a game to search: ");
-            string searchTerm = "Zelda";
+            string searchTerm = "DICK";
 
             string result = await igdbClient.SearchGamesAsync(searchTerm);
 
