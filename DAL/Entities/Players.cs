@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Entities
 {
-    internal class Players
+    public class Players
     {
         public Players() { }
         public string Name { get; set; }

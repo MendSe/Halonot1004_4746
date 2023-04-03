@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Entities
 {
-    internal class Catalogue
+    public class Catalogue
     {
         public Games[] Games { get; set; }
         public string Type { get; set; }// Action game, Simulators, etc

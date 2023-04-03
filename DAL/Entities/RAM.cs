@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Entities
 {
-    internal class RAM
+    public class RAM
     {
         public int Speed { get; set; }
         public int Capacity { get; set; }

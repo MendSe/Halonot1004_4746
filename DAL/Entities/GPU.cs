@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Entities
 {
-    internal class GPU
+    public class GPU
     {
         public string Name { get; set; }
         public string Generation { get; set; }
