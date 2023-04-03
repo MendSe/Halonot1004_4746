@@ -78,4 +78,5 @@ public class IGDBApi
             limit {limit};";
         return await MakeRequestAsync("games", query);
     }
+
 }
