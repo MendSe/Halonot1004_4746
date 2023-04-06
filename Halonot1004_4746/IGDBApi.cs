@@ -70,13 +70,30 @@ public class IGDBApi
         return null;
     }
 
-    public async Task<string> SearchGamesAsync(string searchTerm, int limit = 10)
+    public async Task<string> SearchGamesAsync(string searchTerm, int limit = 10)//limit = 10
     {
+        //name,  summary, platforms.name, release_dates.date,
         string query = $@"
             search ""{searchTerm}""; 
-            fields name, platforms.name, release_dates.date, summary; 
+            fields id, name,url, summary; 
             limit {limit};";
         return await MakeRequestAsync("games", query);
     }
+    //"img-responsive cover_uniform game-card-image cover_big cover_big"
 
+    public async Task<string> GetGameCoverAsync(int gameId)
+    {
+        string endpoint = "covers";
+        string query = $@"where game = {gameId};
+                        fields url;
+                        limit 1;";
+        string result = await MakeRequestAsync(endpoint, query);
+        JArray jsonArray = JArray.Parse(result);
+        string imageUrl = null;
+        if (jsonArray.Count > 0)
+        {
+            imageUrl = jsonArray[0].Value<string>("url");
+        }
+        return imageUrl;
+    }
 }
