@@ -1,3 +1,5 @@
+using BL;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -21,5 +23,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+var bl = new BL.BL();
+await bl.StoreGamesAsync("Pokemon");
 
 app.Run();

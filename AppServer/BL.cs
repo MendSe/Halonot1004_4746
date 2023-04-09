@@ -27,7 +27,7 @@ namespace BL
             // Replace with your IGDB API key.
             string clientID = "gqmx72k19ulx4zgvik4os0tshig4x5";
             string secretID = "ze9zicpgudjhw4dzjxxqs50o0hmvrp";
-            IGDB_Api igdbClient = new IGDB_Api(clientID, secretID);
+            IGDBApi igdbClient = new IGDBApi(clientID, secretID);
 
             // Search for games.
             string searchResult = await igdbClient.SearchGamesAsync(searchTerm);
@@ -41,24 +41,16 @@ namespace BL
             // Loop through the search result and retrieve more details for each game.
             foreach (var game in jsonArray)
             {
-                // Get the game details.
-                string gameResult = await igdbClient.GetGameAsync(Convert.ToInt32(game["id"]));
-
-
-                // Deserialize the game details.
-                JArray gameArray = JArray.Parse(gameResult);
-
-                // Get the first (and only) element of the array.
-                JObject gameObj = (JObject)gameArray[0];
 
                 // Create a new Games object and add it to the list.
                 Games newGame = new Games
                 {
-                    Name = gameObj["name"].ToString(),
-                    Summary = gameObj["summary"]?.ToString(),
-                    ReleaseDate = DateTimeOffset.FromUnixTimeSeconds((long)gameObj["first_release_date"]).UtcDateTime,
-                    Rating = (double?)gameObj["total_rating"],
-                    CoverImageUrl = gameObj["cover"]?["url"]?.ToString(),
+                    Id = game["id"].Value<int>(),
+                    Name = game["name"].ToString(),
+                    Summary = game["summary"]?.ToString(),
+                    ReleaseDate = DateTimeOffset.FromUnixTimeSeconds((long)game["first_release_date"]).UtcDateTime
+                    //Rating = (double?)game["total_rating"],
+                    //CoverImageUrl = game["cover"]?["url"]?.ToString(),
                 };
                 games.Add(newGame);
             }
