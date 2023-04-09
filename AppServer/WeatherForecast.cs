@@ -1,4 +1,4 @@
-namespace AppServer
+namespace BL
 {
     public class WeatherForecast
     {

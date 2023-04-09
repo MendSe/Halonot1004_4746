@@ -87,7 +87,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Models\DScontext.cs" />
+    <Compile Include="DAL.cs" />
+    <Compile Include="IDAL.cs" />
+    <Compile Include="Models\DBcontext.cs" />
     <Compile Include="Entities\Catalogue.cs" />
     <Compile Include="Entities\Games.cs" />
     <Compile Include="Entities\GPU.cs" />

@@ -5,11 +5,11 @@ using DAL.Entities;
 
 namespace DAL.Models
 {
-    public class DSContext : DbContext
+    public class DBContext : DbContext
     {
-        public DSContext() : base("Pannel")
+        public DBContext() : base("Pannel")
         {
-            Database.SetInitializer<DSContext>(new CreateDatabaseIfNotExists<DSContext>());
+            Database.SetInitializer<DBContext>(new CreateDatabaseIfNotExists<DBContext>());
         }
 
         public DbSet<Catalogue> Catalogue { get; set; }

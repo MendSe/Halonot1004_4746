@@ -9,7 +9,7 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            using (var context = new DSContext())
+            using (var context = new DBContext())
             {
                 // Add a new Catalogue
                 var catalogue = new Catalogue { Type = "Test Catalogue" };
