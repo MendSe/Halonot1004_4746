@@ -20,8 +20,12 @@ namespace DAL
 
         public async Task AddGamesAsync(List<Games> games)
         {
-            _context.Games.AddRange(games);
-            await _context.SaveChangesAsync();
+            //_context.Games.AddRange(games);
+            foreach (var game in games)
+            {
+                _context.Games.Add(game);
+                await _context.SaveChangesAsync();
+            }
         }
 
     }
