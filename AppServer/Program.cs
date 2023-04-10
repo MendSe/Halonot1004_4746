@@ -15,7 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
+//test
 var dbContext = new DBContext();
 var dal = new DAL.DAL(dbContext);
 app.Use(async (context, next) =>
@@ -23,6 +23,7 @@ app.Use(async (context, next) =>
     context.Items["IDAL"] = dal;
     await next.Invoke();
 });
+//tests
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
