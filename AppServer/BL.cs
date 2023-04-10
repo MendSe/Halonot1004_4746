@@ -12,6 +12,10 @@ namespace BL
         {
             myDal = new DAL.DAL();
         }
+        public BL(IDAL dal)
+        {
+            myDal=dal;
+        }
         public async Task StoreGamesAsync(string searchTerm)
         {
             // Retrieve games info from IGDB API
