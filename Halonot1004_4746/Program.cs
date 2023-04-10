@@ -42,13 +42,13 @@ namespace Sales
                 Console.WriteLine(count++);
             }
             Console.WriteLine($"Results: {result}");
-            string imagePath = "C:\\Users\\Mendel\\Desktop\\Fuck\\1235465.jpg";
+            string imagePath = "C:\\Users\\Mendel\\Desktop\\Fuck\\finally.jpg";
             string directoryPath = Path.GetDirectoryName(imagePath);
             Directory.CreateDirectory(directoryPath);
-            string imageurl = firstimage.Substring(2);
+            string imageurl = "http://" + firstimage.Substring(2);
             using (WebClient webClient = new WebClient())
             {
-                webClient.DownloadFile(imageurl, "1234569.jpg");
+                webClient.DownloadFile(imageurl.Replace("t_thumb", "t_cover_big"), imagePath);
             }
 
             Console.ReadLine();

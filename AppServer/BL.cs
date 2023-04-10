@@ -19,6 +19,8 @@ namespace BL
 
             // Store games in database
             await myDal.AddGamesAsync(games);
+            await myDal.testtest();
+            
         }
 
 
@@ -53,6 +55,7 @@ namespace BL
                     //CoverImageUrl = game["cover"]?["url"]?.ToString(),
                 };
                 games.Add(newGame);
+                
             }
 
 

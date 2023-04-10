@@ -10,5 +10,6 @@ namespace DAL
     public interface IDAL
     {
     Task AddGamesAsync(List<Games> games);
+    Task testtest();
     }
 }
