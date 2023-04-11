@@ -15,5 +15,6 @@ namespace DAL.Models
 
         public DbSet<Catalogue> Catalogue { get; set; }
         public DbSet<Games> Games { get; set; }
+        public DbSet<Servers> Servers { get; set; }
     }
 }

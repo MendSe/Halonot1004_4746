@@ -12,6 +12,7 @@ namespace DAL.Entities
         [Key]
         public int id { get; set; }
         public string Type { get; set; }// Action game, Simulators, etc
+        public List<Games> ListGames { get; set; }
         public Catalogue() { }
 
     }

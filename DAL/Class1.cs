@@ -28,6 +28,16 @@ namespace ConsoleApp
                 }
 
                 // Add similar tests for other entities (Games, GPU, RAM, Servers)
+
+                // Add a list of games
+
+                var game1 = new Games { Id = 1 };
+                var game2 = new Games { Id = 2 };
+
+
+
+
+
             }
 
             Console.WriteLine("Press any key to exit.");

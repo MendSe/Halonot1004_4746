@@ -8,6 +8,8 @@ namespace BL
     public class BL
     {
         private IDAL myDal;
+        private string clientID = "gqmx72k19ulx4zgvik4os0tshig4x5";
+        private string secretID = "ze9zicpgudjhw4dzjxxqs50o0hmvrp";
         public BL()
         {
             myDal = new DAL.DAL();
@@ -24,16 +26,16 @@ namespace BL
             // Store games in database
             await myDal.AddGamesAsync(games);
             await myDal.testtest();
+            List<Games> mytest = (List<Games>)await myDal.ListOfGames();
+
             
         }
 
 
         public async Task<List<Games>> RetrieveGamesFromApiAsync(string searchTerm)
         {
-            // Replace with your IGDB API key.
-            string clientID = "gqmx72k19ulx4zgvik4os0tshig4x5";
-            string secretID = "ze9zicpgudjhw4dzjxxqs50o0hmvrp";
-            IGDBApi igdbClient = new IGDBApi(clientID, secretID);
+
+            IGDBApi igdbClient = new IGDBApi(clientID,secretID);
 
             // Search for games.
             string searchResult = await igdbClient.SearchGamesAsync(searchTerm);
