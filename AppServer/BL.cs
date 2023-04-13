@@ -2,6 +2,9 @@
 using System;
 using Newtonsoft.Json.Linq;
 using DAL;
+using System.Net.Http;
+using System.Text.Json;
+
 
 namespace BL
 {
@@ -68,6 +71,34 @@ namespace BL
             // Return the list of games.
             return games;
         }
+
+        public async Task<Servers> GetDataFromPythonApiAsync(string gameName,string start_time=null,string end_time=null)
+        {
+            //var apiUrl = $"http://localhost:5000/GetData/{gameName}/{start_time}/{end_time}";
+            var apiUrl = $"http://localhost:5000/GetData/{gameName}";
+            using var httpClient = new HttpClient();
+            var response = await httpClient.GetAsync(apiUrl);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                var result = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(jsonResponse);
+                Servers newServer = new Servers
+                {
+                    CPUUsage = result["CPUUsage"].GetSingle(),
+                    GameName = result["GameName"].GetString(),
+                    MaxCPU = result["MaxCPU"].GetSingle(),
+                    PlayersCount = result["PlayersCount"].GetInt32(),
+                    RAMSize = result["RAMSize"].GetInt32(),
+                    RAMUsage = result["RAMUsage"].GetSingle(),
+                    Source = result["Source"].GetString()
+                };
+                return newServer;
+            }
+
+            return null;
+        }
+
 
     }
 }

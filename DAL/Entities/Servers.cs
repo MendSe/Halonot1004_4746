@@ -10,17 +10,15 @@ namespace DAL.Entities
     public class Servers
     {
         [Key]
-        public int id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; } 
-        public RAM RAM { get; set; }
-        public GPU GPU { get; set; }
+        public string GameName { get; set; }
+        public float CPUUsage  { get; set; }
+        public float MaxCPU { get; set; } 
+        public int PlayersCount { get; set; }
+        public int RAMSize { get; set; }
+        public float RAMUsage { get; set; }
+        public string Source { get; set; }
         public Servers() { }
-        public Catalogue[] Catalogues { get; set; }
         public Status Status { get; set; }
-        public int NumPlayers { get; set; }
-        public Players[] Players { get; set; }
-        public double MaxScore { get; set; }
 
     }
 }

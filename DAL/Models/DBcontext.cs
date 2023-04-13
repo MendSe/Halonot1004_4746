@@ -9,8 +9,8 @@ namespace DAL.Models
     {
         public DBContext() : base("Pannel")
         {
-            Database.SetInitializer<DBContext>(new CreateDatabaseIfNotExists<DBContext>());
-            //Database.SetInitializer<DBContext>(new DropCreateDatabaseIfModelChanges<DBContext>());
+            //Database.SetInitializer<DBContext>(new CreateDatabaseIfNotExists<DBContext>());
+            Database.SetInitializer<DBContext>(new DropCreateDatabaseIfModelChanges<DBContext>());
         }
 
         public DbSet<Catalogue> Catalogue { get; set; }
