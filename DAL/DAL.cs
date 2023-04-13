@@ -33,6 +33,12 @@ namespace DAL
             await _context.SaveChangesAsync();
         }
 
+        public async Task AddServerAsync(Servers server)
+        {
+            _context.Servers.Add(server);            
+            await _context.SaveChangesAsync();
+        }
+
         public async Task AddGameToCatalogue(Catalogue catalogue, Games game)
         {
             _context.Catalogue.Find(catalogue)?.ListGames.Add(game);
@@ -44,14 +50,6 @@ namespace DAL
             if (_context.Catalogue.Contains(catalogue))
                 return;
             _context.Catalogue.Add(catalogue);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task AddServer(Servers server)
-        {
-            if (_context.Servers.Contains(server))
-                return ;
-            _context.Servers.Add(server);
             await _context.SaveChangesAsync();
         }
 
@@ -102,6 +100,18 @@ namespace DAL
                 return null;
             }
         }
+        public async Task<IEnumerable<Servers>> ListOfServers()
+        {
+            try
+            {
+                List<Servers> servers = _context.Servers.ToList<Servers>();
+                return servers;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
 
         public async Task<IEnumerable<Catalogue>> ListOfCatalogues()
         {
@@ -116,29 +126,20 @@ namespace DAL
             }
         }
 
-        public async Task<IEnumerable<Servers>> ListOfServers()
-        {
-            try
-            {
-                List<Servers> serv = _context.Servers.ToList<Servers>();
-                return serv;
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
-
-
         #endregion Get all
 
 
         public async Task testtest()
         {
             Games temp;
+            Servers orary;
             foreach (var game in _context.Games)
             {
-                temp = game;
+                Console.WriteLine(game);
+            }
+            foreach (var serv in _context.Servers)
+            {
+                Console.WriteLine(serv);
             }
         }
 

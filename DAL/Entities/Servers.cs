@@ -20,5 +20,9 @@ namespace DAL.Entities
         public Servers() { }
         public Status Status { get; set; }
 
+        public override string ToString()
+        {
+            return $"Game name: {GameName}\nCPU usage: {CPUUsage}\nMax CPU usage: {MaxCPU}\nPlayers count: {PlayersCount}\nRAM size: {RAMSize}\nRAM usage: {RAMUsage}\nSource: {Source}";
+        }
     }
 }

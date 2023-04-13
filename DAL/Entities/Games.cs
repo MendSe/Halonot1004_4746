@@ -23,6 +23,10 @@ namespace DAL.Entities
 
         public DateTime ReleaseDate { get; set; }
 
+        public override string ToString()
+        {
+            return $"Game ID: {Id}\nGame Name: {Name}\nSummary: {Summary}\nRelease_Date: {ReleaseDate}";
+        }
 
 
     }

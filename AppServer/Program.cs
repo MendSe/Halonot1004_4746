@@ -34,6 +34,7 @@ dynamic datasimulator = engine.ImportModule("datasimulator");*/
 var app = builder.Build();
 
 //test
+/*
 var dbContext = new DBContext();
 var dal = new DAL.DAL(dbContext);
 app.Use(async (context, next) =>
@@ -41,6 +42,7 @@ app.Use(async (context, next) =>
     context.Items["IDAL"] = dal;
     await next.Invoke();
 });
+*/
 //tests
 
 // Configure the HTTP request pipeline.
@@ -58,9 +60,11 @@ app.MapControllers();
 
 //MAIN
 var bl = new BL.BL();
-await bl.StoreGamesAsync("Pokemon");
+await bl.testtest();
+await bl.StoreGamesAsync("Rocket League");
+await bl.StoreServerAsync("Rocket League");
 
-var gameData = await bl.GetDataFromPythonApiAsync("Rocket League", "12 April 2023 00:00","12 April 2023 01:00");
+var gameData = await bl.RetrieveServerFromApiAsync("Rocket League");
 if (gameData != null)
 {
     Console.WriteLine($"Game data for 'Pokemon': {JsonSerializer.Serialize(gameData)}");

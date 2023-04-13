@@ -59,7 +59,7 @@ namespace BL
                     Id = game["id"].Value<int>(),
                     Name = game["name"].ToString(),
                     Summary = game["summary"]?.ToString(),
-                    ReleaseDate = DateTimeOffset.FromUnixTimeSeconds((long)game["first_release_date"]).UtcDateTime
+                    ReleaseDate = game["first_release_date"]?.Value<long?>() != null ? DateTimeOffset.FromUnixTimeSeconds((long)game["first_release_date"]).UtcDateTime : new DateTime(1753, 1, 1),
                     //Rating = (double?)game["total_rating"],
                     //CoverImageUrl = game["cover"]?["url"]?.ToString(),
                 };
@@ -72,7 +72,19 @@ namespace BL
             return games;
         }
 
-        public async Task<Servers> GetDataFromPythonApiAsync(string gameName,string start_time=null,string end_time=null)
+        public async Task StoreServerAsync(string searchTerm)
+        {
+            // Retrieve games info from IGDB API
+            Servers server = await RetrieveServerFromApiAsync(searchTerm);
+
+            // Store games in database
+            await myDal.AddServerAsync(server);
+            await myDal.testtest();
+            List<Servers> mytest = (List<Servers>)await myDal.ListOfServers();
+
+
+        }
+        public async Task<Servers> RetrieveServerFromApiAsync(string gameName)
         {
             //var apiUrl = $"http://localhost:5000/GetData/{gameName}/{start_time}/{end_time}";
             var apiUrl = $"http://localhost:5000/GetData/{gameName}";
@@ -97,6 +109,10 @@ namespace BL
             }
 
             return null;
+        }
+        public async Task testtest()
+        {
+            myDal.testtest();
         }
 
 
