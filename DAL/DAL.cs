@@ -29,8 +29,9 @@ namespace DAL
             foreach (var game in games)
             {
                 _context.Games.Add(game);
+                await _context.SaveChangesAsync();
             }
-            await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
         }
 
         public async Task AddServerAsync(Servers server)

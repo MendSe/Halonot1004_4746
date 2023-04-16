@@ -56,7 +56,7 @@ namespace BL
                 // Create a new Games object and add it to the list.
                 Games newGame = new Games
                 {
-                    Id = game["id"].Value<int>(),
+                    Game_Id = game["id"].Value<int>(),
                     Name = game["name"].ToString(),
                     Summary = game["summary"]?.ToString(),
                     ReleaseDate = game["first_release_date"]?.Value<long?>() != null ? DateTimeOffset.FromUnixTimeSeconds((long)game["first_release_date"]).UtcDateTime : new DateTime(1753, 1, 1),

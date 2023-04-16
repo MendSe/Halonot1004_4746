@@ -11,10 +11,8 @@ namespace DAL.Entities
     public class Games
     {
         [Key]
-        public int Id { get; set; }
-
         public string Name { get; set; }
-
+        public int Game_Id { get; set; }
         public string Summary { get; set; }
 
         //public double? Rating { get; set; }
@@ -25,7 +23,7 @@ namespace DAL.Entities
 
         public override string ToString()
         {
-            return $"Game ID: {Id}\nGame Name: {Name}\nSummary: {Summary}\nRelease_Date: {ReleaseDate}";
+            return $"Game ID: {Game_Id}\nGame Name: {Name}\nSummary: {Summary}\nRelease_Date: {ReleaseDate}";
         }
 
 

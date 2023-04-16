@@ -61,8 +61,9 @@ app.MapControllers();
 //MAIN
 var bl = new BL.BL();
 await bl.testtest();
-await bl.StoreGamesAsync("Rocket League");
-await bl.StoreServerAsync("Rocket League");
+await bl.StoreGamesAsync("League of legends");
+await bl.testtest();
+await bl.StoreServerAsync("League of Legends");
 
 var gameData = await bl.RetrieveServerFromApiAsync("Rocket League");
 if (gameData != null)

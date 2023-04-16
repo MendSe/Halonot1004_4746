@@ -31,8 +31,8 @@ namespace ConsoleApp
 
                 // Add a list of games
 
-                var game1 = new Games { Id = 1 };
-                var game2 = new Games { Id = 2 };
+                var game1 = new Games { Game_Id = 1 };
+                var game2 = new Games { Game_Id = 2 };
 
 
 
