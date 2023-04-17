@@ -2,6 +2,7 @@
 using DAL.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Contexts;
@@ -16,6 +17,11 @@ namespace DAL
         private readonly DBContext _context;
         public DAL() { 
             _context = new DBContext();
+            //clear db
+            using (var context = new DBContext())
+            {
+                context.EmptyLocalDb();
+            }
         }
         public DAL(DBContext dBContext) {
             _context=dBContext;
@@ -33,7 +39,14 @@ namespace DAL
             }
             //await _context.SaveChangesAsync();
         }
-
+        public async Task AddGameAsync(Games game)
+        {
+            // _context.Games.AddRange(games)
+                _context.Games.Add(game);
+                await _context.SaveChangesAsync();
+            
+            //await _context.SaveChangesAsync();
+        }
         public async Task AddServerAsync(Servers server)
         {
             _context.Servers.Add(server);            

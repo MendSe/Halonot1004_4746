@@ -29,11 +29,18 @@ namespace BL
             // Store games in database
             await myDal.AddGamesAsync(games);
             await myDal.testtest();
-            List<Games> mytest = (List<Games>)await myDal.ListOfGames();
-
-            
+            List<Games> mytest = (List<Games>)await myDal.ListOfGames();           
         }
+        public async Task StoreGameAsync(string searchTerm)
+        {
+            // Retrieve games info from IGDB API
+            Games game = await RetrieveGameFromApiAsync(searchTerm);
 
+            // Store games in database
+            await myDal.AddGameAsync(game);
+            await myDal.testtest();
+            List<Games> mytest = (List<Games>)await myDal.ListOfGames();
+        }
 
         public async Task<List<Games>> RetrieveGamesFromApiAsync(string searchTerm)
         {
@@ -71,6 +78,42 @@ namespace BL
             // Return the list of games.
             return games;
         }
+        public async Task<Games> RetrieveGameFromApiAsync(string searchTerm)
+        {
+
+            IGDBApi igdbClient = new IGDBApi(clientID, secretID);
+
+            // Search for games.
+            string searchResult = await igdbClient.SearchGamesAsync(searchTerm,1);
+
+            // Deserialize the search result.
+            JArray jsonArray = JArray.Parse(searchResult);
+
+            // Create a list to store the games.
+            Games game = new Games();
+
+            // Loop through the search result and retrieve more details for each game.
+            if (jsonArray.Count > 0)
+            {
+                JObject firstGame = jsonArray.First as JObject;
+
+                // Create a new Games object and add it to the list.
+                Games newGame = new Games
+                {
+                    Game_Id = firstGame["id"].Value<int>(),
+                    Name = firstGame["name"].ToString(),
+                    Summary = firstGame["summary"]?.ToString(),
+                    ReleaseDate = firstGame["first_release_date"]?.Value<long?>() != null ? DateTimeOffset.FromUnixTimeSeconds((long)firstGame["first_release_date"]).UtcDateTime : new DateTime(1753, 1, 1),
+                    //Rating = (double?)game["total_rating"],
+                    //CoverImageUrl = game["cover"]?["url"]?.ToString(),
+                };
+
+                // Return the list of games.
+                return newGame;
+            }
+            return null;
+        }
+
 
         public async Task StoreServerAsync(string searchTerm)
         {

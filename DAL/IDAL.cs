@@ -10,6 +10,7 @@ namespace DAL
     public interface IDAL
     {
         Task AddGamesAsync(List<Games> games);
+        Task AddGameAsync(Games game);
         Task AddServerAsync(Servers server);
         Task testtest();
         Task AddGameToCatalogue(Catalogue catalogue, Games game);

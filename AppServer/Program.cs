@@ -60,12 +60,13 @@ app.MapControllers();
 
 //MAIN
 var bl = new BL.BL();
-await bl.testtest();
-await bl.StoreGamesAsync("League of legends");
-await bl.testtest();
-await bl.StoreServerAsync("League of Legends");
+//await bl.testtest();
+//await bl.StoreGamesAsync("Skyrim");
+await bl.StoreGameAsync("Super Mario Galaxy 2");
+//await bl.StoreServerAsync("Skyrim");
 
-var gameData = await bl.RetrieveServerFromApiAsync("Rocket League");
+/*
+ * var gameData = await bl.RetrieveServerFromApiAsync("Rocket League");
 if (gameData != null)
 {
     Console.WriteLine($"Game data for 'Pokemon': {JsonSerializer.Serialize(gameData)}");
@@ -74,6 +75,6 @@ else
 {
     Console.WriteLine("Error retrieving game data from Python API.");
 }
-
+*/
 
 app.Run();
