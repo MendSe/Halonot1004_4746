@@ -1,5 +1,6 @@
 using BL;
 using DAL;
+using DAL.Entities;
 using System.Data.Entity;
 using Microsoft.Extensions.DependencyInjection;
 using DAL.Models;
@@ -62,6 +63,8 @@ app.MapControllers();
 var bl = new BL.BL();
 //await bl.testtest();
 //await bl.StoreGamesAsync("Skyrim");
+List<PlayersTime> playersTimelist = await bl.RetrieveNumberOfPlayersTime("PUBG", new DateTime(2023, 4, 16, 1, 0, 0), new DateTime(2023, 4, 17, 1, 0, 0));
+foreach (var player in playersTimelist) Console.WriteLine(player+"\n");
 await bl.StoreGameAsync("Super Mario Galaxy 2");
 //await bl.StoreServerAsync("Skyrim");
 

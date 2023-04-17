@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using DAL;
 using System.Net.Http;
 using System.Text.Json;
-
+using Microsoft.AspNetCore.Connections.Features;
 
 namespace BL
 {
@@ -21,6 +21,7 @@ namespace BL
         {
             myDal=dal;
         }
+        #region API
         public async Task StoreGamesAsync(string searchTerm)
         {
             // Retrieve games info from IGDB API
@@ -153,6 +154,44 @@ namespace BL
 
             return null;
         }
+        #endregion API
+
+        #region Emulator
+
+        public async Task<List<PlayersTime>> RetrieveNumberOfPlayersTime(string gamename, DateTime start, DateTime end)
+        {
+            Servers serv = await RetrieveServerFromApiAsync(gamename);
+            DateTime now = DateTime.Now;
+            double coef = now.Hour-12;
+            double x = coef/12*Math.PI;
+            double test = Math.Sin(Math.PI);
+            //int sign = coef < 0 ? 1 : -1;
+            //int numOfPlayers = (int)(serv.PlayersCount * ((float)2 / 3 * Math.Sin(((coef * 15) * Math.PI) / 180) + 1));
+            //double b = (double)4 / 5 * Math.Sin(((coef * 15) * Math.PI) / 180);
+            int numOfPlayers = (int)(serv.PlayersCount / ((float)(2 / 3.0) * Math.Sin(((now.Hour / 12.0) * Math.PI) + x) + 1));
+            start = new DateTime(start.Year, start.Month, start.Day, start.Hour, 0, 0);
+            List<PlayersTime> playersTimes = new List<PlayersTime>();
+            Random random = new Random();
+            double randomFactor = 1 + (random.NextDouble() * 0.14 - 0.07);
+
+            while (start < end)
+            {
+                PlayersTime playersTime = new PlayersTime
+                {
+                    Hour = start,
+                    Num = (int)(numOfPlayers * ((float)(2 / 3.0) * Math.Sin(((start.Hour / 12.0) * Math.PI) + x) + 1) * randomFactor)
+            };
+                playersTimes.Add(playersTime);
+                start = start.AddHours(1);
+                randomFactor = 1 + (random.NextDouble() * 0.14 - 0.07);
+            }
+            return playersTimes;
+        }
+
+
+        #endregion Emulator
+
+        //test from dal class to print things
         public async Task testtest()
         {
             myDal.testtest();

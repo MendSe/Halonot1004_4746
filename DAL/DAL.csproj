@@ -88,6 +88,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="DAL.cs" />
+    <Compile Include="Entities\PlayersTime.cs" />
     <Compile Include="IDAL.cs" />
     <Compile Include="Models\DBcontext.cs" />
     <Compile Include="Entities\Catalogue.cs" />
