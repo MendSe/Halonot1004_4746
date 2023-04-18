@@ -162,13 +162,14 @@ namespace BL
         {
             Servers serv = await RetrieveServerFromApiAsync(gamename);
             DateTime now = DateTime.Now;
+            now = new DateTime(now.Year, now.Month, now.Day, now.Hour, 0, 0);
             double coef = now.Hour-12;
-            double x = coef/12*Math.PI;
-            double test = Math.Sin(Math.PI);
+            double x = (coef/12)*Math.PI;
+            //double test = Math.Sin(Math.PI);
             //int sign = coef < 0 ? 1 : -1;
             //int numOfPlayers = (int)(serv.PlayersCount * ((float)2 / 3 * Math.Sin(((coef * 15) * Math.PI) / 180) + 1));
             //double b = (double)4 / 5 * Math.Sin(((coef * 15) * Math.PI) / 180);
-            int numOfPlayers = (int)(serv.PlayersCount / ((float)(2 / 3.0) * Math.Sin(((now.Hour / 12.0) * Math.PI) + x) + 1));
+            int numOfPlayers = (int)(serv.PlayersCount / ((float)(2 / 3.0) * Math.Sin(x) + 1));
             start = new DateTime(start.Year, start.Month, start.Day, start.Hour, 0, 0);
             List<PlayersTime> playersTimes = new List<PlayersTime>();
             Random random = new Random();
@@ -179,7 +180,7 @@ namespace BL
                 PlayersTime playersTime = new PlayersTime
                 {
                     Hour = start,
-                    Num = (int)(numOfPlayers * ((float)(2 / 3.0) * Math.Sin(((start.Hour / 12.0) * Math.PI) + x) + 1) * randomFactor)
+                    Num = now == start ? serv.PlayersCount : (int)(numOfPlayers * ((float)(2 / 3.0) * Math.Sin((((start.Hour-now.Hour) / 12.0) * Math.PI) + x) + 1) * randomFactor)
             };
                 playersTimes.Add(playersTime);
                 start = start.AddHours(1);

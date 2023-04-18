@@ -63,9 +63,9 @@ app.MapControllers();
 var bl = new BL.BL();
 //await bl.testtest();
 //await bl.StoreGamesAsync("Skyrim");
-List<PlayersTime> playersTimelist = await bl.RetrieveNumberOfPlayersTime("PUBG", new DateTime(2023, 4, 16, 1, 0, 0), new DateTime(2023, 4, 17, 1, 0, 0));
+List<PlayersTime> playersTimelist = await bl.RetrieveNumberOfPlayersTime("Dota 2", new DateTime(2023, 4, 18, 0, 0, 0), new DateTime(2023, 4, 19, 1, 0, 0));
 foreach (var player in playersTimelist) Console.WriteLine(player+"\n");
-await bl.StoreGameAsync("Super Mario Galaxy 2");
+await bl.StoreGameAsync("Dota 2");
 //await bl.StoreServerAsync("Skyrim");
 
 /*
