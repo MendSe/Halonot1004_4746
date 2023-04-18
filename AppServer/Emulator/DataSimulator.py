@@ -44,8 +44,6 @@ def get_data_estimate(game_name):
         else:
             players_count = random.randint(0, constants.MAX_PLAYES_COUNT)
             games[game_name][SOURCE] = 'Random'
-    if players_count > constants.MAX_PLAYES_COUNT:
-        players_count = constants.MAX_PLAYES_COUNT
 
     games[game_name][PLAYERS_COUNT] = players_count
     # add to CPU usage
