@@ -99,6 +99,9 @@
     <Compile Include="Entities\Servers.cs" />
     <Compile Include="Entities\Status.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Covers\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
