@@ -20,9 +20,29 @@ namespace PL
     /// </summary>
     public partial class MainWindow : Window
     {
+       
+
         public MainWindow()
         {
             InitializeComponent();
+
+            
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Username.Text == "admin" && Password.Password == "1234")
+            {
+                MenuWindow menu = new MenuWindow();
+                menu.Show();
+                this.Close();
+            }
+            else
+            {
+                Error.Visibility = Visibility.Visible;
+            }
         }
     }
+
+   
 }
