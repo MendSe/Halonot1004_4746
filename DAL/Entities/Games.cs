@@ -15,9 +15,9 @@ namespace DAL.Entities
         public int Game_Id { get; set; }
         public string Summary { get; set; }
 
-        //public double? Rating { get; set; }0
+        public string CoverPath { get; set; }
 
-        //public int TotalRatingCount { get; set; }
+        public string CoverUrl { get; set; }
 
         public DateTime ReleaseDate { get; set; }
 

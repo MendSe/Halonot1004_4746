@@ -75,7 +75,7 @@ public class IGDBApi
         //name,  summary, platforms.name, release_dates.date,
         string query = $@"
             search ""{searchTerm}""; 
-            fields id, name,url, summary; 
+            fields id, name,url, summary,cover.url; 
             limit {limit};";
         return await MakeRequestAsync("games", query);
     }

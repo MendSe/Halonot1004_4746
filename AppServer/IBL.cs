@@ -1,0 +1,7 @@
+﻿namespace BL
+{
+    interface IBL 
+    {
+    
+    }
+}

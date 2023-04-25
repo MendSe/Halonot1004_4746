@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Connections.Features;
 
 namespace BL
 {
-    public class BL
+    public class BL : IBL
     {
         private IDAL myDal;
         private string clientID = "gqmx72k19ulx4zgvik4os0tshig4x5";
@@ -68,7 +68,7 @@ namespace BL
                     Name = game["name"].ToString(),
                     Summary = game["summary"]?.ToString(),
                     ReleaseDate = game["first_release_date"]?.Value<long?>() != null ? DateTimeOffset.FromUnixTimeSeconds((long)game["first_release_date"]).UtcDateTime : new DateTime(1753, 1, 1),
-                    //Rating = (double?)game["total_rating"],
+                    CoverPath = null,
                     //CoverImageUrl = game["cover"]?["url"]?.ToString(),
                 };
                 games.Add(newGame);
@@ -105,7 +105,8 @@ namespace BL
                     Name = firstGame["name"].ToString(),
                     Summary = firstGame["summary"]?.ToString(),
                     ReleaseDate = firstGame["first_release_date"]?.Value<long?>() != null ? DateTimeOffset.FromUnixTimeSeconds((long)firstGame["first_release_date"]).UtcDateTime : new DateTime(1753, 1, 1),
-                    //Rating = (double?)game["total_rating"],
+                    CoverPath = null,
+                    CoverUrl = firstGame["cover.url"]?.ToString()
                     //CoverImageUrl = game["cover"]?["url"]?.ToString(),
                 };
 

@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using PL.MVVM.ViewModel;
 
 namespace PL.MVVM.View
 {
@@ -21,10 +22,13 @@ namespace PL.MVVM.View
     /// </summary>
     public partial class Games : Window
     {
+        public GameVM viewM { get; set; }
         public Games()
         {
             InitializeComponent();
-            GameCatalogue.ItemsSource = new ObservableCollection<string>() { "Item1", "Item2", "Item3", "Item4", "Item5", "Item6", "Item7", "Item8", "Item9" };
+            viewM = new GameVM();
+            this.DataContext = viewM;
+            this.GameCatalogue.ItemsSource = viewM.games.CoverUrl;
         }
     }
 }
