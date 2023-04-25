@@ -1,0 +1,30 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL.MVVM.View"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="PL.MVVM.View.Games"
+        mc:Ignorable="d"
+        Title="Games" Height="450" Width="800">
+    <syncfusion:Carousel x:Name="GameCatalogue" VisualMode="CustomPath" VerticalAlignment="Center" ItemsPerPage="5" RadiusX="250" Height="257" Width="558" SelectedIndex="4">
+        <syncfusion:Carousel.Path>
+
+            <Path Data="M0,300 L600,300" Stroke="Blue" StrokeThickness="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+        </syncfusion:Carousel.Path>
+        <syncfusion:Carousel.ItemTemplate>
+
+            <DataTemplate>
+
+                <Border Height="100" Width="100" Background="LightBlue">
+
+                    <ContentControl Content="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                </Border>
+
+            </DataTemplate>
+
+        </syncfusion:Carousel.ItemTemplate>
+    </syncfusion:Carousel>
+</Window>
