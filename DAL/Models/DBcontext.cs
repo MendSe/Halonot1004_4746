@@ -12,6 +12,8 @@ namespace DAL.Models
         {
             Database.SetInitializer<DBContext>(new CreateDatabaseIfNotExists<DBContext>());
             //Database.SetInitializer<DBContext>(new DropCreateDatabaseIfModelChanges<DBContext>());
+            //Database.SetInitializer<DBContext>(new DropCreateDatabaseAlways<DBContext>());
+
         }
 
         public DbSet<Catalogue> Catalogue { get; set; }

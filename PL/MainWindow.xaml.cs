@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PL.MVVM.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,13 +21,13 @@ namespace PL
     /// </summary>
     public partial class MainWindow : Window
     {
-       
+
 
         public MainWindow()
         {
             InitializeComponent();
 
-            
+
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -42,7 +43,12 @@ namespace PL
                 Error.Visibility = Visibility.Visible;
             }
         }
+        private void TestButton_Click(object sender, RoutedEventArgs e)
+        {
+            GamesView gamesView = new GamesView();
+            gamesView.Show();
+            this.Close();
+        }
     }
-
    
 }

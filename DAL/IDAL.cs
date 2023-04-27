@@ -19,8 +19,8 @@ namespace DAL
         Task DeleteGameFromCatalogue(Catalogue catalogue, Games game);
         Task DeleteCatalogue(Catalogue catalogue);
         Task DeleteServer(Servers server);
-        Task<IEnumerable<Games>> ListOfGames();
-        Task<IEnumerable<Servers>> ListOfServers();
+        IEnumerable<Games> ListOfGames();
+        IEnumerable<Servers> ListOfServers();
         Task<IEnumerable<Catalogue>> ListOfCatalogues();
     }
 }

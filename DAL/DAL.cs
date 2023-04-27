@@ -18,10 +18,10 @@ namespace DAL
         public DAL() { 
             _context = new DBContext();
             //clear db
-            using (var context = new DBContext())
+            /*using (var context = new DBContext())
             {
                 context.EmptyLocalDb();
-            }
+            }*/
         }
         public DAL(DBContext dBContext) {
             _context=dBContext;
@@ -102,7 +102,7 @@ namespace DAL
 
         #region Get all
 
-        public async Task<IEnumerable<Games>> ListOfGames()
+        public IEnumerable<Games> ListOfGames()
         {
             try
             {
@@ -114,7 +114,7 @@ namespace DAL
                 return null;
             }
         }
-        public async Task<IEnumerable<Servers>> ListOfServers()
+        public IEnumerable<Servers> ListOfServers()
         {
             try
             {

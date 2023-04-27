@@ -48,5 +48,6 @@
 
             <Button x:Name="LoginButton" Content="Login" Width="100" HorizontalAlignment="Center" materialDesign:ButtonAssist.CornerRadius="20" Click="LoginButton_Click"/>
         </StackPanel>
+        <Button x:Name="TestButton" Grid.Column="2" Content="Test" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Click="TestButton_Click"/>
     </Grid>
 </Window>

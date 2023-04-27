@@ -1,44 +1,93 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using DAL.Entities;
-
+using IGDB.Models;
+using PL.MVVM.View;
 
 namespace PL.MVVM.ViewModel
 {
-    public class GameVM
+    public class GameVM : INotifyPropertyChanged
     {
         private BL.IBL myBL;
         public ObservableCollection<Games> games { get; set; }
-        public ObservableCollection<ImageSource> CarouselImages { get; set; }
+        //public ObservableCollection<ImageSource> CarouselImages { get; set; }
+        private int _selectedIndex;
+        public int SelectedIndex
+        {
+            get { return _selectedIndex; }
+            set
+            {
+                if (_selectedIndex != value)
+                {
+                    _selectedIndex = value;
+                    OnPropertyChanged(nameof(SelectedIndex));
+                    OnPropertyChanged(nameof(CurrentDescription));
+                }
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         public GameVM()
         {
             myBL = new BL.BL();
             games = new ObservableCollection<Games>(myBL.GetGames());
-            CarouselImages = new ObservableCollection<ImageSource>();
-            LoadImagesAsync();
-        }
-
-        private async Task LoadImagesAsync()
-        {
-            foreach (var game in games)
+           
+            foreach(var game in games)
             {
-                if (!string.IsNullOrEmpty(game.CoverUrl))
+                ImageCollection.Add(new CarouselModel(game));
+            }
+
+
+        }
+        private List<CarouselModel> _imageCollection = new List<CarouselModel>();
+
+        public List<CarouselModel> ImageCollection
+        {
+            get { return _imageCollection; }
+            set { _imageCollection = value; }
+        }
+        public string CurrentDescription
+        {
+            get
+            {
+                if (SelectedIndex >= 0 && SelectedIndex < ImageCollection.Count)
                 {
-                    BitmapImage image = new BitmapImage();
-                    image.BeginInit();
-                    image.UriSource = new Uri(game.CoverUrl);
-                    image.CacheOption = BitmapCacheOption.OnLoad;
-                    image.EndInit();
-                    CarouselImages.Add(image);
+                    return ImageCollection[SelectedIndex].Description;
+                }
+                else
+                {
+                    return "";
                 }
             }
         }
+
     }
+    public class CarouselModel
+    {
+        public CarouselModel(Games game)
+        {
+            Image = ("https:"+game.CoverUrl).Replace("t_thumb", "t_cover_big");
+            Description = game.Summary+ (game.ReleaseDate != new DateTime(1753, 1, 1)? "\nRelease date: " + game.ReleaseDate.ToString():"");
+            
+        }
+        public string Image { get; set; }
+
+        public string Description { get; set; }
+
+    }
+
 }
+

@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace PL.MVVM.Model
 {
-    internal class GameM
+    class GameM
     {
+        public List<string> gameNames { get; set; }
+
+        public GameM() {
+            gameNames = new List<string> {"a","b","c","d","e"};                          
+        }
+
     }
 }

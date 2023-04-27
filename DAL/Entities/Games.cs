@@ -23,7 +23,7 @@ namespace DAL.Entities
 
         public override string ToString()
         {
-            return $"Game ID: {Game_Id}\nGame Name: {Name}\nSummary: {Summary}\nRelease_Date: {ReleaseDate}";
+            return $"Game ID: {Game_Id}\nGame Name: {Name}\nSummary: {Summary}\nRelease_Date: {ReleaseDate}\nCoverUrl: {CoverUrl}";
         }
 
 

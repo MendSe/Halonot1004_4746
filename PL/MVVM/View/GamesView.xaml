@@ -4,27 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.MVVM.View"
-        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="PL.MVVM.View.Games"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="PL.MVVM.View.GamesView"
         mc:Ignorable="d"
-        Title="Games" Height="450" Width="800">
-    <syncfusion:Carousel x:Name="GameCatalogue" VisualMode="CustomPath" VerticalAlignment="Center" ItemsPerPage="5" RadiusX="250" Height="257" Width="558" SelectedIndex="4">
-        <syncfusion:Carousel.Path>
+        Title="GamesView" Height="500" Width="850">
+    <Grid>
+        <StackPanel Margin="170,283,170,86">
+            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="{Binding CurrentDescription}" Height="114"/>
 
-            <Path Data="M0,300 L600,300" Stroke="Blue" StrokeThickness="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
-        </syncfusion:Carousel.Path>
-        <syncfusion:Carousel.ItemTemplate>
 
-            <DataTemplate>
+        </StackPanel>
+        <syncfusion:Carousel x:Name="GameCatalogue" ItemsSource="{Binding ImageCollection}" VisualMode="CustomPath" ItemsPerPage="5" RadiusX="250" SelectedIndex="4" Margin="121,-10,121,0" Height="288" VerticalAlignment="Top">
+            <syncfusion:Carousel.Path>
 
-                <Border Height="100" Width="100" Background="LightBlue">
+                <Path Data="M0,300 L600,300" Stroke="Blue" StrokeThickness="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
-                    <ContentControl Content="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </syncfusion:Carousel.Path>
+            <syncfusion:Carousel.ItemTemplate>
 
-                </Border>
+                <DataTemplate>
+                    <Border Height="252" Width="178" Background="LightBlue">
+                        <Image Source="{Binding Image}" Stretch="UniformToFill"/>
+                    </Border>
+                </DataTemplate>
 
-            </DataTemplate>
-
-        </syncfusion:Carousel.ItemTemplate>
-    </syncfusion:Carousel>
+            </syncfusion:Carousel.ItemTemplate>
+        </syncfusion:Carousel>
+    </Grid>
 </Window>

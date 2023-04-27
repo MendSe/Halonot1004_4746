@@ -29,8 +29,7 @@ namespace BL
 
             // Store games in database
             await myDal.AddGamesAsync(games);
-            await myDal.testtest();
-            List<Games> mytest = (List<Games>)await myDal.ListOfGames();           
+            await myDal.testtest();       
         }
         public async Task StoreGameAsync(string searchTerm)
         {
@@ -40,7 +39,6 @@ namespace BL
             // Store games in database
             await myDal.AddGameAsync(game);
             await myDal.testtest();
-            List<Games> mytest = (List<Games>)await myDal.ListOfGames();
         }
 
         public async Task<List<Games>> RetrieveGamesFromApiAsync(string searchTerm)
@@ -69,6 +67,7 @@ namespace BL
                     Summary = game["summary"]?.ToString(),
                     ReleaseDate = game["first_release_date"]?.Value<long?>() != null ? DateTimeOffset.FromUnixTimeSeconds((long)game["first_release_date"]).UtcDateTime : new DateTime(1753, 1, 1),
                     CoverPath = null,
+                    CoverUrl = game["cover.url"]?.ToString()
                     //CoverImageUrl = game["cover"]?["url"]?.ToString(),
                 };
                 games.Add(newGame);
@@ -106,8 +105,8 @@ namespace BL
                     Summary = firstGame["summary"]?.ToString(),
                     ReleaseDate = firstGame["first_release_date"]?.Value<long?>() != null ? DateTimeOffset.FromUnixTimeSeconds((long)firstGame["first_release_date"]).UtcDateTime : new DateTime(1753, 1, 1),
                     CoverPath = null,
-                    CoverUrl = firstGame["cover.url"]?.ToString()
-                    //CoverImageUrl = game["cover"]?["url"]?.ToString(),
+                    //CoverUrl = firstGame["cover"]?.ToString()
+                    CoverUrl = firstGame["cover"]["url"].ToString(),
                 };
 
                 // Return the list of games.
@@ -125,7 +124,6 @@ namespace BL
             // Store games in database
             await myDal.AddServerAsync(server);
             await myDal.testtest();
-            List<Servers> mytest = (List<Servers>)await myDal.ListOfServers();
 
 
         }
@@ -193,10 +191,16 @@ namespace BL
 
         #endregion Emulator
 
+        public IEnumerable<Games> GetGames()
+        {
+            return myDal.ListOfGames();
+
+        }
+
         //test from dal class to print things
         public async Task testtest()
         {
-            myDal.testtest();
+            await myDal.testtest();
         }
 
 
