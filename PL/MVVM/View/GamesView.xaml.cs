@@ -20,7 +20,7 @@ namespace PL.MVVM.View
     /// <summary>
     /// Interaction logic for GamesView.xaml
     /// </summary>
-    public partial class GamesView : Window
+    public partial class GamesView : UserControl
     {
         public GameVM viewM { get; set; }
 

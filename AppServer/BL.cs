@@ -174,18 +174,63 @@ namespace BL
             Random random = new Random();
             double randomFactor = 1 + (random.NextDouble() * 0.14 - 0.07);
 
+
             while (start < end)
             {
+                float coefDayMonth = CoefDayMonth(start);
                 PlayersTime playersTime = new PlayersTime
                 {
                     Hour = start,
-                    Num = now == start ? serv.PlayersCount : (int)(numOfPlayers * ((float)(2 / 3.0) * Math.Sin((((start.Hour-now.Hour) / 12.0) * Math.PI) + x) + 1) * randomFactor)
+                    Num = now == start ? serv.PlayersCount : (int)(numOfPlayers * ((float)(2 / 3.0) * Math.Sin((((start.Hour-now.Hour) / 12.0) * Math.PI) + x) + 1) * randomFactor*coefDayMonth)
             };
                 playersTimes.Add(playersTime);
                 start = start.AddHours(1);
                 randomFactor = 1 + (random.NextDouble() * 0.14 - 0.07);
             }
             return playersTimes;
+        }
+
+        public float CoefDayMonth(DateTime time)
+        {
+            float coef = 1;
+
+            switch (time.Month)
+            {
+                case 8:
+                case 9:
+                case 12:
+                    coef *= 12 / 10;
+                    break;
+                case 10:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                    coef *= 9 / 10;
+                    break;
+                default:
+                    break;
+            }
+
+            switch (time.DayOfWeek)
+            {
+                case DayOfWeek.Saturday:
+                case DayOfWeek.Sunday:
+                    coef *= 12 / 10;
+                    break;
+                case DayOfWeek.Friday:
+                    coef *= 11 / 10;
+                    break;
+                case DayOfWeek.Monday:
+                case DayOfWeek.Tuesday:
+                case DayOfWeek.Thursday:
+                    coef *= 9 / 10;
+                    break;
+                default:
+                    break;
+            }
+
+            return coef;
         }
 
 

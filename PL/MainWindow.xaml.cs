@@ -21,13 +21,19 @@ namespace PL
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        private string _imageMeats = "C:\\Users\\Lior\\source\\repos\\MendSe\\Halonot1004_4746\\PL\\images\\meats.png";
+        public string imageMeats
+        {
+            get { return _imageMeats; }
+            set { _imageMeats = value; }
+        }
 
         public MainWindow()
         {
             InitializeComponent();
 
-
+            // Set the DataContext of the Window to itself
+            DataContext = this;
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -43,11 +49,9 @@ namespace PL
                 Error.Visibility = Visibility.Visible;
             }
         }
-        private void TestButton_Click(object sender, RoutedEventArgs e)
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            GamesView gamesView = new GamesView();
-            gamesView.Show();
-            this.Close();
+            Close();
         }
     }
    

@@ -1,0 +1,59 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}"
+       x:Key="CustomButton">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <StackPanel Orientation="Vertical"
+                          Background="#FF171A21" Cursor="Hand">
+                            <TextBlock Name="source" Text="{TemplateBinding Property=Content}"
+                                   DataContext="{TemplateBinding Property=ContentStringFormat}"
+                                   HorizontalAlignment="Center"
+                                   Foreground="White"
+                                   FontSize="28"
+                                   Width="175"
+                                   Margin="0,20,-70,40"/>
+                            <materialDesign:PackIcon
+                                   Kind="{Binding ElementName=source, Path=DataContext}"
+                                   HorizontalAlignment="Center"
+                                   Foreground="White"
+                                   Height="50"
+                                   Width="50"
+                                   Margin="0,0,0,0"/>
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsMouseCaptured" Value="True">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <StackPanel Orientation="Vertical" Background="#FF212045">
+                                <TextBlock Name="sourcetrg" Text="{TemplateBinding Property=Content}"
+                                   DataContext="{TemplateBinding Property=ContentStringFormat}"
+                                   HorizontalAlignment="Center"
+                                   Foreground="White"
+                                   FontSize="28"
+                                   Width="175"
+                                   Margin="0,20,-70,40"/>
+                                <materialDesign:PackIcon
+                                   Kind="{Binding ElementName=sourcetrg, Path=DataContext}"
+                                   HorizontalAlignment="Center"
+                                   Foreground="White"
+                                   Height="50"
+                                   Width="50"
+                                   Margin="0,0,0,0"/>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

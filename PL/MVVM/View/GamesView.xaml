@@ -1,4 +1,4 @@
-﻿<Window
+﻿<UserControl 
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PL.MVVM.View"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="PL.MVVM.View.GamesView"
         mc:Ignorable="d"
-        Title="GamesView" Height="500" Width="850">
+        d:DesignHeight="500" d:DesignWidth="850">
     <Grid>
         <StackPanel Margin="170,283,170,86">
             <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="{Binding CurrentDescription}" Height="114"/>
@@ -31,4 +31,4 @@
             </syncfusion:Carousel.ItemTemplate>
         </syncfusion:Carousel>
     </Grid>
-</Window>
+</UserControl>

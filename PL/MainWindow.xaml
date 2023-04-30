@@ -1,53 +1,73 @@
 ﻿<Window x:Class="PL.MainWindow"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Login Page" Height="450" Width="800"
-        Background="{DynamicResource MaterialDesignPaper}"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}">
-
+        Title="Login Window" Height="450" Width="350"
+        Background="#FF171A21"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Blue.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="47*" />
+            <RowDefinition Height="Auto" MinHeight="95.028" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="66*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+        <TextBox Name="Username" Grid.Column="1" Width="200" HorizontalAlignment="Center"
+                 materialDesign:HintAssist.Hint="Username"
+                 materialDesign:HintAssist.Foreground="White" FontSize="18"
+                 Background="#FF838383" Margin="0,5,0,56" RenderTransformOrigin="0.5,0.5" Grid.Row="1" >
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-1.478"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-0.374"/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <PasswordBox Name="Password" Grid.Row="1" Grid.Column="1" Width="200" HorizontalAlignment="Center"
+                     materialDesign:HintAssist.Hint="Password"
+                     materialDesign:HintAssist.Foreground="White" FontSize="18"
+                     Background="#FF838383" Margin="0,48,0,14" />
+        <TextBox x:Name="Error" FontSize="12" FontWeight="Bold" TextWrapping="Wrap" Text="Wrong Password or Id" 
+                 Width="130" Foreground="#DDE80000" Visibility="Hidden" HorizontalAlignment="Center" Grid.Column="1" Margin="0,0,0,171" Grid.Row="1" Grid.RowSpan="4" Height="27" VerticalAlignment="Bottom"/>
+        <Button Grid.Row="3" Grid.Column="1" Margin="0,0,0,127"
+                Content="LOG IN NOW" Background="Blue" Foreground="White" Click="LoginButton_Click" Grid.RowSpan="2" Height="32" VerticalAlignment="Bottom" FontFamily="Century Gothic" FontWeight="Bold" />
+        <Image x:Name="image" Source="{Binding imageMeats}" Height="144" Margin="-1,0,-1,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+        <Border
+            Grid.Row="0"
+            Name="Exit"
+            Width="19"
+            Height="21"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Background="#E81123"
+            BorderBrush="Transparent"
+             Grid.Column="2">
+            <materialDesign:PackIcon Kind="Close" MouseLeftButtonDown="CloseButton_Click" Foreground="White"
+                             HorizontalAlignment="Center" Grid.Column="2" VerticalAlignment="Center" Height="21" Width="20"/>
+        </Border>
 
-        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Login" FontSize="36" FontWeight="Bold" Width="94"/>
-            <TextBox x:Name="Error" FontSize="12" FontWeight="Bold" TextWrapping="Wrap" Text="Wrong Password or Id" Height="24" Width="129" Foreground="#DDE80000" Visibility="Hidden"/>
-
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                <TextBlock Text="Username" FontSize="18" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                <TextBox x:Name="Username" Width="200" materialDesign:HintAssist.Hint="Enter your username" VerticalContentAlignment="Center" Margin="0,0,0,20"/>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                <TextBlock Text="Password" FontSize="18" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                <PasswordBox x:Name="Password" Width="200" materialDesign:HintAssist.Hint="Enter your password" VerticalContentAlignment="Center" Margin="0,0,0,20"/>
-            </StackPanel>
-
-            <Button x:Name="LoginButton" Content="Login" Width="100" HorizontalAlignment="Center" materialDesign:ButtonAssist.CornerRadius="20" Click="LoginButton_Click"/>
-        </StackPanel>
-        <Button x:Name="TestButton" Grid.Column="2" Content="Test" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Click="TestButton_Click"/>
     </Grid>
 </Window>

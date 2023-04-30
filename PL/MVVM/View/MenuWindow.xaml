@@ -4,9 +4,116 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MenuWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MenuWindow" Height="580" Width="850"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Background="White">
+    <Window.Resources>
+
+        <Storyboard x:Key="OpenMenu">
+
+            <ThicknessAnimation
+                Storyboard.TargetProperty="Margin" 
+                From="0,-80,0,0" 
+                To="0,0,0,0" 
+                DecelerationRatio="0.9" 
+                Duration="0:0:0.3"/>
+
+        </Storyboard>
+
+        <Storyboard x:Key="CloseMenu">
+
+            <ThicknessAnimation 
+                Storyboard.TargetProperty="Margin" 
+                From="0,0,0,0" 
+                To="0,-80,0,0" 
+                DecelerationRatio="0.9"
+                Duration="0:0:0.3"/>
+
+        </Storyboard>
+
+    </Window.Resources>
+    <Border MouseDown="Border_MouseHold" >
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="420"/>
+            </Grid.RowDefinitions>
+            <ContentControl Content="{Binding CurrentView}" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Height="500" Width="850" Grid.RowSpan="2"/>
+
+            <Grid 
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Name="Bar"
+                Background="#FF171A21" Height="160" VerticalAlignment="Top"
+                >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="75"/>
+                    <ColumnDefinition Width="193"/>
+                    <ColumnDefinition Width="193"/>
+                    <ColumnDefinition Width="193"/>
+                    <ColumnDefinition Width="196"/>
+                </Grid.ColumnDefinitions>
+
+                <Button
+            Grid.Row="0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Background="Transparent"
+            Width="75"
+            Height="80"
+            BorderBrush="Transparent"
+            Click="ButtonBase_OnClick"
+             Cursor="Hand" Margin="0,80,0,0">
+
+                    <materialDesign:PackIcon
+                    Name="OpenCloseButtonIcon"
+                    Foreground="White"
+                    Kind="MenuUp"
+                    Height="50"
+                    Width="50"
+                    />
+
+                </Button>
+
+                <Button
+                Style="{StaticResource CustomButton}"
+                ContentStringFormat="Server"
+                Content="SERVER"
+                Click="Button_OnClick"
+                BorderBrush="Transparent"
+                Command="{Binding solarSystemCommand}"  Grid.Column="1"/>
+
+                <Button
+                Style="{StaticResource CustomButton}"
+                ContentStringFormat="Analyse"
+                Content="ANALYZE"
+                Click="Button_OnClick"
+                BorderBrush="Transparent"
+                Command="{Binding solarSystemCommand}" Grid.Column="2"/>
+                <Button
+                    Style="{StaticResource CustomButton}"
+                    ContentStringFormat="Games"
+                    Content="GAMES"
+                    Click="Button_OnClick"
+                    BorderBrush="Transparent"
+                    Command="{Binding ShowGamesCommand}" Grid.Column="3"
+                    Height="160"/>
+                <Button
+                    Style="{StaticResource CustomButton}"
+                    ContentStringFormat="Search"
+                    Content="SEARCH"
+                    Click="Button_OnClick"
+                    BorderBrush="Transparent"
+                    Command="{Binding solarSystemCommand}" Grid.Column="4" Margin="0,0,3,0"/>
+            </Grid>
+
+
+        </Grid>
+    </Border>
 </Window>
