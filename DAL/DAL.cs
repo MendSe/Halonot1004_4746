@@ -49,8 +49,22 @@ namespace DAL
         }
         public async Task AddServerAsync(Servers server)
         {
-            _context.Servers.Add(server);            
-            await _context.SaveChangesAsync();
+            var existingObject = _context.Servers.Find(server.GameName);
+            if (existingObject != null)
+            {
+                // Update the existing object with new values
+                existingObject.PlayersCount = server.PlayersCount;
+                // ... update other properties as needed
+
+                // Save the changes
+                _context.SaveChanges();
+            }
+            else
+            {
+                _context.Servers.Add(server);
+                await _context.SaveChangesAsync();
+            }
+
         }
 
         public async Task AddGameToCatalogue(Catalogue catalogue, Games game)
