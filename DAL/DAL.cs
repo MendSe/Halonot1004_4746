@@ -42,10 +42,15 @@ namespace DAL
         public async Task AddGameAsync(Games game)
         {
             // _context.Games.AddRange(games)
+            var existingObject = _context.Servers.Find(game.Name);
+            if (existingObject == null)
+            {
                 _context.Games.Add(game);
                 await _context.SaveChangesAsync();
-            
-            //await _context.SaveChangesAsync();
+
+                //await _context.SaveChangesAsync();
+            }
+
         }
         public async Task AddServerAsync(Servers server)
         {
