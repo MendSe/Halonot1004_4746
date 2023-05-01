@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\meats.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MaterialDesignColors" Version="2.1.2" />
     <PackageReference Include="MaterialDesignThemes" Version="4.8.0" />
     <PackageReference Include="Syncfusion.Shared.WPF" Version="21.1.41" />
@@ -15,6 +19,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AppServer\AppServer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\meats.png" />
   </ItemGroup>
 
 </Project>

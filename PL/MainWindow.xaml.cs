@@ -21,7 +21,8 @@ namespace PL
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string _imageMeats = "C:\\Users\\Lior\\source\\repos\\MendSe\\Halonot1004_4746\\PL\\images\\meats.png";
+        private string _imageMeats = "pack://application:,,,/PL;component/images/meats.png";
+
         public string imageMeats
         {
             get { return _imageMeats; }
