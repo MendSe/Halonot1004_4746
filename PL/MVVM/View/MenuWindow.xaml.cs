@@ -66,5 +66,9 @@ namespace PL
                 OpenCloseButtonIcon.Kind = PackIconKind.MenuDown;
             }
         }
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

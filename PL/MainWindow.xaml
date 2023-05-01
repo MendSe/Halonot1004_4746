@@ -57,15 +57,16 @@
         <Image x:Name="image" Source="{Binding imageMeats}" Height="144" Margin="-1,0,-1,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
         <Border
             Grid.Row="0"
-            Name="Exit"
+            Name="Close"
             Width="19"
             Height="21"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
             Background="#E81123"
             BorderBrush="Transparent"
+            MouseLeftButtonDown="CloseButton_Click"
              Grid.Column="2">
-            <materialDesign:PackIcon Kind="Close" MouseLeftButtonDown="CloseButton_Click" Foreground="White"
+            <materialDesign:PackIcon Kind="Close"  Foreground="White"
                              HorizontalAlignment="Center" Grid.Column="2" VerticalAlignment="Center" Height="21" Width="20"/>
         </Border>
 

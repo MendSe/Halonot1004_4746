@@ -111,8 +111,23 @@
                     Click="Button_OnClick"
                     BorderBrush="Transparent"
                     Command="{Binding solarSystemCommand}" Grid.Column="4" Margin="0,0,3,0"/>
-            </Grid>
 
+                
+            </Grid>
+            <Border
+            Grid.Row="0"
+            Name="Close"
+            Width="19"
+            Height="21"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Background="#E81123"
+            BorderBrush="Transparent"
+            MouseLeftButtonDown="CloseButton_Click"
+             Grid.Column="4">
+                <materialDesign:PackIcon Kind="Close"  Foreground="White"
+                             HorizontalAlignment="Center" Grid.Column="2" VerticalAlignment="Center" Height="21" Width="20"/>
+            </Border>
 
         </Grid>
     </Border>
