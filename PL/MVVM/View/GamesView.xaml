@@ -8,8 +8,10 @@
         mc:Ignorable="d"
         d:DesignHeight="500" d:DesignWidth="850">
     <Grid>
-        <StackPanel Margin="170,283,170,86">
-            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="{Binding CurrentDescription}" Height="114"/>
+        <Image Source="pack://application:,,,/PL;component/images/GameBack.png" Stretch="UniformToFill" Margin="-9,-5,-5,-5"/>
+
+        <StackPanel Margin="164,347,168,28">
+            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="{Binding CurrentDescription}" Height="125" Width="516" Foreground="White" FontFamily="Cascadia Code" FontSize="14"/>
 
 
 
@@ -23,8 +25,8 @@
             <syncfusion:Carousel.ItemTemplate>
 
                 <DataTemplate>
-                    <Border Height="252" Width="178" Background="LightBlue">
-                        <Image Source="{Binding Image}" Stretch="UniformToFill"/>
+                    <Border Height="252" Width="178" >
+                        <Image Source="{Binding Image}"/>
                     </Border>
                 </DataTemplate>
 

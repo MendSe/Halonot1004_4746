@@ -63,11 +63,13 @@ app.MapControllers();
 var bl = new BL.BL();
 //await bl.testtest();
 //await bl.StoreGamesAsync("Skyrim");
-List<string> gameNames= new List<string>() { "Rocket League","Elden Ring","Goat Simulator","Cuphead","Hollow Knight","Hogwarts Legacy","God of War","Sekiro","Worms W.M.D","Counter Strike Global offensive","Hades","The binding of isaac"};
+List<string> gameNames= new List<string>() { "Rocket League","Elden Ring","Goat Simulator","Cuphead","Hollow Knight","Hogwarts Legacy","God of War","Sekiro","Worms W.M.D","Counter Strike Global offensive","Hades","The binding of isaac","PUBG"};
 foreach (string gameName in gameNames)await bl.StoreGameAsync(gameName);
 //List<PlayersTime> playersTimelist = await bl.RetrieveNumberOfPlayersTime("Dota 2", new DateTime(2023, 4, 18, 0, 0, 0), new DateTime(2023, 4, 19, 1, 0, 0));
 //foreach (var player in playersTimelist) Console.WriteLine(player+"\n");
 //await bl.StoreGameAsync("Dota 2");
+List<string> serverNames = new List<string>() { "PUBG", "Elden Ring", "Hogwarts Legacy", "Worms W.M.D", "Counter Strike Global offensive", "The binding of isaac" };
+foreach (string serverName in serverNames) await bl.StoreServerAsync(serverName);
 await bl.StoreServerAsync("PUBG");
 
 /*
