@@ -18,40 +18,47 @@ namespace Sales
             string SecretID = "ze9zicpgudjhw4dzjxxqs50o0hmvrp";
             IGDBApi igdbClient = new IGDBApi(ClientID, SecretID);
 
-            Console.Write("Enter a game to search: ");
-            string searchTerm = "Pokemon";
-
-            string result = await igdbClient.SearchGamesAsync(searchTerm);
-            JArray jsonArray = JArray.Parse(result);
-            int[] gameIds = new int[jsonArray.Count];
-            //string imageurl = await igdbClient.GetGameCoverAsync(searchTerm);
-            string[] imageurls = new string[jsonArray.Count];   
-            for (int i = 0; i < jsonArray.Count; i++)
+            for (int j = 0; j < 5; j++)
             {
-                int gameId = jsonArray[i].Value<int>("id");
-                gameIds[i] = gameId;
-            }
+                Console.Write("Enter a game to search: ");
+                string searchTerm = Console.ReadLine();
 
-            string firstimage = await igdbClient.GetGameCoverAsync(gameIds[0]);
-            int count = 0;
-            foreach (var game in result.Split(new string[] { "}," }, StringSplitOptions.None))
-            {
-                Console.WriteLine(game);
-                Console.WriteLine(gameIds[count]);
-                Console.WriteLine(firstimage);
-                Console.WriteLine(count++);
-            }
-            Console.WriteLine($"Results: {result}");
-            string imagePath = "C:\\Users\\Mendel\\Desktop\\Fuck\\finally.jpg";
-            string directoryPath = Path.GetDirectoryName(imagePath);
-            Directory.CreateDirectory(directoryPath);
-            string imageurl = "http://" + firstimage.Substring(2);
-            using (WebClient webClient = new WebClient())
-            {
-                webClient.DownloadFile(imageurl.Replace("t_thumb", "t_cover_big"), imagePath);
-            }
+                string result = await igdbClient.SearchGamesAsync(searchTerm);
+                JArray jsonArray = JArray.Parse(result);
+                int[] gameIds = new int[jsonArray.Count];
+                //string imageurl = await igdbClient.GetGameCoverAsync(searchTerm);
+                string[] imageurls = new string[jsonArray.Count];
+                string[] gamesname = new string[jsonArray.Count];
+                for (int i = 0; i < jsonArray.Count; i++)
+                {
+                    int gameId = jsonArray[i].Value<int>("id");
+                    string gamename = jsonArray[i].Value<string>("name");
+                    gameIds[i] = gameId;
+                    gamesname[i] = gamename;
+                }
 
-            Console.ReadLine();
+                string firstimage = await igdbClient.GetGameCoverAsync(gameIds[0]);
+                int count = 0;
+                foreach (var game in result.Split(new string[] { "}," }, StringSplitOptions.None))
+                {
+                    Console.WriteLine(game);
+                    Console.WriteLine(gameIds[count]);
+                    Console.WriteLine(firstimage);
+                    Console.WriteLine(count++);
+                }
+                Console.WriteLine($"Results: {result}");
+                string imagePath = "C:\\Users\\Mendel\\Desktop\\Fuck\\" + gamesname[0].Replace(':', '-') + ".jpg";
+                string directoryPath = Path.GetDirectoryName(imagePath);
+                Directory.CreateDirectory(directoryPath);
+                string imageurl = "http://" + firstimage.Substring(2);
+                using (WebClient webClient = new WebClient())
+                {
+                    webClient.DownloadFile(imageurl.Replace("t_thumb", "t_cover_big"), imagePath);
+                }
+
+            }
+           
+            
             
         }
     }
