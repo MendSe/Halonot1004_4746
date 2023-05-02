@@ -30,18 +30,23 @@ namespace PL.MVVM.View
             this.DataContext = viewM;
             viewM.TimeValue = "Month";
         }
-        private void GameTile_HealthButtonClicked(object sender, string gameName)
+        private async void GameTile_HealthButtonClicked(object sender, string gameName)
         {
             ContentTabControl.SelectedIndex = 0;
-            viewM.LoadData(gameName);
+            Mouse.OverrideCursor = Cursors.Wait;
+            await viewM.LoadData(gameName);
+            Mouse.OverrideCursor = null;
         }
 
-        private void GameTile_AnalyzeButtonClicked(object sender, string gameName)
+        private async void GameTile_AnalyzeButtonClicked(object sender, string gameName)
         {
             ContentTabControl.SelectedIndex = 1;
-            viewM.LoadData(gameName);
+            Mouse.OverrideCursor = Cursors.Wait;
+            await viewM.LoadData(gameName);
+            Mouse.OverrideCursor = null;
         }
-        private void TimeButtonClicked(object sender, RoutedEventArgs e)
+
+        private async void TimeButtonClicked(object sender, RoutedEventArgs e)
         {
             // Get the name of the clicked button
             string buttonName = ((Button)sender).Name;
@@ -50,11 +55,11 @@ namespace PL.MVVM.View
             switch (buttonName)
             {
                 case "two":
-                    viewM.LoadChartData(-1, 2,1);
+                    viewM.LoadChartData(-1, 2, 1);
                     viewM.TimeValue = "2d";
                     break;
                 case "week":
-                    viewM.LoadChartData(-1, 7,3);
+                    viewM.LoadChartData(-1, 7, 3);
                     viewM.TimeValue = "Week";
                     break;
                 case "month":
@@ -63,6 +68,7 @@ namespace PL.MVVM.View
                     break;
             }
         }
+
 
 
     }

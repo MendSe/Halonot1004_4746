@@ -53,8 +53,7 @@
                 <TabControl x:Name="ContentTabControl" TabStripPlacement="Top">
                     <TabItem Header="Health">
                         <Grid x:Name="HealthGrid">
-                            <lc:AngularGauge Name="gaugeCPU" Margin="104,14,648,146" 
-                            Background="{DynamicResource MaterialDesignCardBackground}"
+                            <lc:AngularGauge Name="gaugeCPU" Margin="31,26,701,118" Height="120" Width="120"                            
                             NeedleFill="{DynamicResource MaterialDesignBody}"
                             TicksForeground="{DynamicResource MaterialDesignBody}"
                             Foreground="WhiteSmoke"
@@ -62,13 +61,12 @@
                             Value="{Binding CurrentServer.CPUUsage}"
                             FromValue="0" ToValue="100">
                                 <lc:AngularGauge.Sections>
-                                    <lc:AngularSection FromValue="0" ToValue="33.33" Fill="Green"/> 
+                                    <lc:AngularSection FromValue="0" ToValue="33.33" Fill="Green"/>
                                     <lc:AngularSection FromValue="33.33" ToValue="66.67" Fill="Orange"/>
                                     <lc:AngularSection FromValue="66.67" ToValue="100" Fill="Red"/>
                                 </lc:AngularGauge.Sections>
                             </lc:AngularGauge>
-                            <lc:AngularGauge Name="gaugeRAM" Margin="648,14,104,146" 
-                            Background="{DynamicResource MaterialDesignCardBackground}"
+                            <lc:AngularGauge Name="gaugeRAM" Margin="705,26,25,117" Height="120" Width="120"
                             NeedleFill="{DynamicResource MaterialDesignBody}"
                             TicksForeground="{DynamicResource MaterialDesignBody}"
                             Foreground="WhiteSmoke"
@@ -82,6 +80,24 @@
                                 </lc:AngularGauge.Sections>
                             </lc:AngularGauge>
 
+
+                            <TextBlock x:Name="GameNameHealth" HorizontalAlignment="Left" Margin="10,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="395" Foreground="White" TextAlignment="Left" FontSize="18" 
+                                       Text="{Binding CurrentServer.GameName}" FontFamily="Cascadia Code"/>
+                            <Label x:Name="CPULabel" Content="CPU Usage" HorizontalAlignment="Left" Margin="50,154,0,0" VerticalAlignment="Top" Height="34" Width="82"
+                                   Foreground="White" FontSize="14" FontFamily="Cascadia Code"/>
+                            <Label x:Name="RamLabel" Content="RAM Usage" HorizontalAlignment="Left" Margin="724,154,0,0" VerticalAlignment="Top" Height="34" Width="82"
+                                Foreground="White" FontSize="14" FontFamily="Cascadia Code" RenderTransformOrigin="0.617,0.515"/>
+                            <Label x:Name="TitleLabel" Content="Informations on the Server:" HorizontalAlignment="Center" Margin="0,28,0,0" VerticalAlignment="Top" Height="34" Width="262"
+                                Foreground="White" FontSize="16" FontFamily="Cascadia Code" RenderTransformOrigin="0.617,0.515"/>
+                            <TextBlock x:Name="MAXCPUText" HorizontalAlignment="Left" Margin="239,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="115" Foreground="White" TextAlignment="Center" FontSize="18" 
+                                Text="{Binding CurrentServer.MaxCPU}" FontFamily="Cascadia Code"/>
+                            <TextBlock x:Name="RAMSizeText" Margin="506,89,229,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Foreground="White" TextAlignment="Center" FontSize="18" 
+                                Text="{Binding CurrentServer.RAMSize}" FontFamily="Cascadia Code"/>
+                            <Label x:Name="CPUUsageLabel" Content="Number of cores of the Server" HorizontalAlignment="Left" Margin="180,154,0,0" VerticalAlignment="Top" Height="34" Width="232"
+                                Foreground="White" FontSize="13" FontFamily="Cascadia Code" RenderTransformOrigin="0.617,0.515"/>
+                            <Label x:Name="RAMUsageLabel" Content="RAM Size of the Server(in Go)" HorizontalAlignment="Left" Margin="444,154,0,0" VerticalAlignment="Top" Height="34" Width="238"
+                                Foreground="White" FontSize="13" FontFamily="Cascadia Code" RenderTransformOrigin="0.617,0.515"/>
+
                         </Grid>
                     </TabItem>
                     <TabItem Header="Analyze">
@@ -90,7 +106,7 @@
                                 <ColumnDefinition Width="129*"/>
                                 <ColumnDefinition Width="41*"/>
                             </Grid.ColumnDefinitions>
-                            <lc:CartesianChart Grid.ColumnSpan="2" Margin="10,29,162,29">
+                            <lc:CartesianChart Grid.ColumnSpan="2" Margin="10,18,162,40">
                                 <lc:CartesianChart.Series>
                                     <lc:ColumnSeries Title="{Binding ChartSeries[0].Title}" Values="{Binding ChartSeries[0].Values}" />
                                 </lc:CartesianChart.Series>
@@ -109,6 +125,8 @@
                             <TextBlock x:Name="textBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="53,114,0,0" TextWrapping="Wrap" 
                                        VerticalAlignment="Top" Height="43" Width="140" Foreground="White" TextAlignment="Center" FontSize="18" 
                                        Text="{Binding CurrentServer.PlayersCount}" FontFamily="Cascadia Code" />
+                            <TextBlock x:Name="GameNameAnalyze" HorizontalAlignment="Left" Margin="10,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="395" Foreground="White" TextAlignment="Left" FontSize="18" 
+                                       Text="{Binding CurrentServer.GameName}" FontFamily="Cascadia Code"/>
                         </Grid>
                     </TabItem>
 

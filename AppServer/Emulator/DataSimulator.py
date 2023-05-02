@@ -22,10 +22,8 @@ def get_data(game_name):
     # Replace this with your actual data retrieval logic
     if game_name not in games.keys():
         games[game_name] = {}
-        games[game_name][MAX_CPU] = random.random()
-        if games[game_name][MAX_CPU] < 0.5:
-            games[game_name][MAX_CPU] = 0.5
-        games[game_name][RAM_SIZE] = random.choice(constants.RAM_size_options)
+        games[game_name][MAX_CPU] = random.randint(4, 24)
+        games[game_name][RAM_SIZE] = random.randint(4, 64)
         games[game_name][GAME_NAME] = game_name
     get_data_estimate(game_name)
     return jsonify(games[game_name])
@@ -52,10 +50,25 @@ def get_data_estimate(game_name):
 
     games[game_name][PLAYERS_COUNT] = players_count
     # add to CPU usage
-    cpu_usage = ((games[game_name][MAX_CPU] * games[game_name][PLAYERS_COUNT]) / games[game_name][PLAYERS_COUNT])*100
+    viewer_percentage = games[game_name][PLAYERS_COUNT] / constants.MAX_PLAYES_COUNT
+    if viewer_percentage > 0.8:
+        cpu_usage = random.uniform(0.75, 0.99)
+    elif viewer_percentage > 0.6:
+        cpu_usage = random.uniform(0.55, 0.85)
+    elif viewer_percentage > 0.4:
+        cpu_usage = random.uniform(0.35, 0.65)
+    else:
+        cpu_usage = random.uniform(0.1, 0.45)
 
     # add to RAM usage
-    ram_usage = (games[game_name][RAM_SIZE]/ 64)*100
+    if games[game_name][RAM_SIZE] < 8:
+        ram_usage = games[game_name][RAM_SIZE] * 0.8
+    elif games[game_name][RAM_SIZE] < 16:
+        ram_usage = games[game_name][RAM_SIZE] * 0.6
+    elif games[game_name][RAM_SIZE] < 32:
+        ram_usage = games[game_name][RAM_SIZE] * 0.4
+    else:
+        ram_usage = games[game_name][RAM_SIZE] * 0.2
 
     games[game_name][CPU_USAGE] = cpu_usage
     games[game_name][RAM_USAGE] = ram_usage

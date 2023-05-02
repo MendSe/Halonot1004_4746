@@ -64,13 +64,13 @@ namespace PL.MVVM.ViewModel
             ChartSeries = new SeriesCollection { new ColumnSeries { Title = "Your Data", Values = new ChartValues<double>() } };
             ChartLabels = new ObservableCollection<string>();
         }
-        public async void LoadData(string gameName = null, int numOfDays = 30, int division = 23)
+        public async Task LoadData(string gameName = null, int numOfDays = 30, int division = 23)
         {
             CurrentServer = await myBL.RetrieveServerFromApiAsync(gameName);
             LoadChartData(CurrentServer.PlayersCount);
-            
         }
-            public async void LoadChartData(int numplayers,int numOfDays=30,int division=23)
+
+        public async void LoadChartData(int numplayers,int numOfDays=30,int division=23)
         {
             // Retrieve the data for the given gameName
             
