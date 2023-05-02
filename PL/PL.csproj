@@ -8,11 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\CS.jpg" />
+    <None Remove="images\Elden.jpg" />
     <None Remove="images\GameBack.png" />
+    <None Remove="images\Hogwarts.jpg" />
+    <None Remove="images\Isaac.jpg" />
     <None Remove="images\meats.png" />
+    <None Remove="images\PUBG.jpg" />
+    <None Remove="images\Worms.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="LiveCharts.Geared" Version="1.2.9" />
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="MaterialDesignColors" Version="2.1.2" />
     <PackageReference Include="MaterialDesignThemes" Version="4.8.0" />
     <PackageReference Include="Syncfusion.Shared.WPF" Version="21.1.41" />
@@ -23,10 +31,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="images\CS.jpg" />
+    <Resource Include="images\Elden.jpg" />
     <Resource Include="images\GameBack.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="images\Hogwarts.jpg" />
+    <Resource Include="images\Isaac.jpg" />
     <Resource Include="images\meats.png" />
+    <Resource Include="images\PUBG.jpg" />
+    <Resource Include="images\Worms.jpg" />
   </ItemGroup>
 
 </Project>

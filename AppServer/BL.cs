@@ -157,18 +157,22 @@ namespace BL
 
         #region Emulator
 
-        public async Task<List<PlayersTime>> RetrieveNumberOfPlayersTime(string gamename, DateTime start, DateTime end)
+        public async Task<List<PlayersTime>> RetrieveNumberOfPlayersTime(int numplayers, DateTime start, DateTime end)
         {
-            Servers serv = await RetrieveServerFromApiAsync(gamename);
+            
+            //Servers serv = await RetrieveServerFromApiAsync(gamename);
             DateTime now = DateTime.Now;
             now = new DateTime(now.Year, now.Month, now.Day, now.Hour, 0, 0);
             double coef = now.Hour-12;
             double x = (coef/12)*Math.PI;
+
             //double test = Math.Sin(Math.PI);
             //int sign = coef < 0 ? 1 : -1;
             //int numOfPlayers = (int)(serv.PlayersCount * ((float)2 / 3 * Math.Sin(((coef * 15) * Math.PI) / 180) + 1));
             //double b = (double)4 / 5 * Math.Sin(((coef * 15) * Math.PI) / 180);
-            int numOfPlayers = (int)(serv.PlayersCount / ((float)(2 / 3.0) * Math.Sin(x) + 1));
+
+            //int numOfPlayers = (int)(serv.PlayersCount / ((float)(2 / 3.0) * Math.Sin(x) + 1));
+            int numOfPlayers = (int)(numplayers / ((float)(2 / 3.0) * Math.Sin(x) + 1));
             start = new DateTime(start.Year, start.Month, start.Day, start.Hour, 0, 0);
             List<PlayersTime> playersTimes = new List<PlayersTime>();
             Random random = new Random();
@@ -177,11 +181,11 @@ namespace BL
 
             while (start < end)
             {
-                float coefDayMonth = CoefDayMonth(start);
+                double coefDayMonth = CoefDayMonth(start);
                 PlayersTime playersTime = new PlayersTime
                 {
                     Hour = start,
-                    Num = now == start ? serv.PlayersCount : (int)(numOfPlayers * ((float)(2 / 3.0) * Math.Sin((((start.Hour-now.Hour) / 12.0) * Math.PI) + x) + 1) * randomFactor*coefDayMonth)
+                    Num = now == start ? numplayers : (int)(numOfPlayers * ((float)(2 / 3.0) * Math.Sin((((start.Hour-now.Hour) / 12.0) * Math.PI) + x) + 1) * randomFactor*coefDayMonth)
             };
                 playersTimes.Add(playersTime);
                 start = start.AddHours(1);
@@ -190,23 +194,23 @@ namespace BL
             return playersTimes;
         }
 
-        public float CoefDayMonth(DateTime time)
+        public double CoefDayMonth(DateTime time)
         {
-            float coef = 1;
+            double coef = 1;
 
             switch (time.Month)
             {
                 case 8:
                 case 9:
                 case 12:
-                    coef *= 12 / 10;
+                    coef *= 1.2;
                     break;
                 case 10:
                 case 3:
                 case 4:
                 case 5:
                 case 6:
-                    coef *= 9 / 10;
+                    coef *= 0.9;
                     break;
                 default:
                     break;
@@ -216,15 +220,15 @@ namespace BL
             {
                 case DayOfWeek.Saturday:
                 case DayOfWeek.Sunday:
-                    coef *= 12 / 10;
+                    coef *= 1.2;
                     break;
                 case DayOfWeek.Friday:
-                    coef *= 11 / 10;
+                    coef *= 1.1;
                     break;
                 case DayOfWeek.Monday:
                 case DayOfWeek.Tuesday:
                 case DayOfWeek.Thursday:
-                    coef *= 9 / 10;
+                    coef *= 0.9;
                     break;
                 default:
                     break;

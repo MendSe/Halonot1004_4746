@@ -3,6 +3,7 @@ import constants
 import random
 from steamworks_wrapper import steamworks_wrapper
 from twitch_wrapper import twitch_wrapper
+
 app = Flask(__name__)
 
 games = {}
@@ -15,16 +16,20 @@ GAME_NAME = 'GameName'
 SOURCE = 'Source'
 twitch_wrapper.set_access_data(constants.TWITCH_CLIENT_ID, constants.TWITCH_API_SECRET)
 
+
 @app.route('/GetData/<game_name>', methods=['GET'])
 def get_data(game_name):
     # Replace this with your actual data retrieval logic
     if game_name not in games.keys():
         games[game_name] = {}
-        games[game_name][MAX_CPU] = random.choice(constants.CPU_GHz_options)
+        games[game_name][MAX_CPU] = random.random()
+        if games[game_name][MAX_CPU] < 0.5:
+            games[game_name][MAX_CPU] = 0.5
         games[game_name][RAM_SIZE] = random.choice(constants.RAM_size_options)
         games[game_name][GAME_NAME] = game_name
     get_data_estimate(game_name)
     return jsonify(games[game_name])
+
 
 def get_data_estimate(game_name):
     try:
@@ -47,20 +52,16 @@ def get_data_estimate(game_name):
 
     games[game_name][PLAYERS_COUNT] = players_count
     # add to CPU usage
-    cpu_usage = (games[game_name][PLAYERS_COUNT] / constants.MAX_PLAYES_COUNT) * games[game_name][MAX_CPU]
-    if cpu_usage > games[game_name][MAX_CPU]:
-        cpu_usage = games[game_name][MAX_CPU]
+    cpu_usage = ((games[game_name][MAX_CPU] * games[game_name][PLAYERS_COUNT]) / games[game_name][PLAYERS_COUNT])*100
 
     # add to RAM usage
-    ram_usage = (games[game_name][PLAYERS_COUNT] / constants.MAX_PLAYES_COUNT) * games[game_name][RAM_SIZE]
-    if ram_usage > games[game_name][RAM_SIZE]:
-        ram_usage = games[game_name][RAM_SIZE]
+    ram_usage = (games[game_name][RAM_SIZE]/ 64)*100
 
-    
     games[game_name][CPU_USAGE] = cpu_usage
     games[game_name][RAM_USAGE] = ram_usage
 
     return players_count, cpu_usage, ram_usage
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

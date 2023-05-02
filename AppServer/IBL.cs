@@ -7,7 +7,7 @@ namespace BL
         IEnumerable<Games> GetGames();
         Task<Games> RetrieveGameFromApiAsync(string searchTerm);
         Task<List<Games>> RetrieveGamesFromApiAsync(string searchTerm);
-        Task<List<PlayersTime>> RetrieveNumberOfPlayersTime(string gamename, DateTime start, DateTime end);
+        Task<List<PlayersTime>> RetrieveNumberOfPlayersTime(int numplayers, DateTime start, DateTime end);
         Task<Servers> RetrieveServerFromApiAsync(string gameName);
         Task StoreGameAsync(string searchTerm);
         Task StoreGamesAsync(string searchTerm);
