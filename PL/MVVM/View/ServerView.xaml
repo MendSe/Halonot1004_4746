@@ -53,15 +53,30 @@
                 <TabControl x:Name="ContentTabControl" TabStripPlacement="Top">
                     <TabItem Header="Health">
                         <Grid x:Name="HealthGrid">
-                            <lc:AngularGauge Name="gauge" Margin="79,41,673,131" 
+                            <lc:AngularGauge Name="gaugeCPU" Margin="104,14,648,146" 
                             Background="{DynamicResource MaterialDesignCardBackground}"
                             NeedleFill="{DynamicResource MaterialDesignBody}"
                             TicksForeground="{DynamicResource MaterialDesignBody}"
-                            FontSize="8" 
+                            Foreground="WhiteSmoke"
+                            FontSize="12" FontWeight="Bold"
                             Value="{Binding CurrentServer.CPUUsage}"
                             FromValue="0" ToValue="100">
                                 <lc:AngularGauge.Sections>
                                     <lc:AngularSection FromValue="0" ToValue="33.33" Fill="Green"/> 
+                                    <lc:AngularSection FromValue="33.33" ToValue="66.67" Fill="Orange"/>
+                                    <lc:AngularSection FromValue="66.67" ToValue="100" Fill="Red"/>
+                                </lc:AngularGauge.Sections>
+                            </lc:AngularGauge>
+                            <lc:AngularGauge Name="gaugeRAM" Margin="648,14,104,146" 
+                            Background="{DynamicResource MaterialDesignCardBackground}"
+                            NeedleFill="{DynamicResource MaterialDesignBody}"
+                            TicksForeground="{DynamicResource MaterialDesignBody}"
+                            Foreground="WhiteSmoke"
+                            FontSize="12" FontWeight="Bold"
+                            Value="{Binding CurrentServer.RAMUsage}"
+                            FromValue="0" ToValue="100">
+                                <lc:AngularGauge.Sections>
+                                    <lc:AngularSection FromValue="0" ToValue="33.33" Fill="Green"/>
                                     <lc:AngularSection FromValue="33.33" ToValue="66.67" Fill="Orange"/>
                                     <lc:AngularSection FromValue="66.67" ToValue="100" Fill="Red"/>
                                 </lc:AngularGauge.Sections>
