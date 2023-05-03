@@ -187,7 +187,17 @@ namespace PL.MVVM.ViewModel
         }
         private async void Predict()
         {
-            if (PredictDate.Year <= DateTime.Now.Year && PredictDate.Month <= DateTime.Now.Month && PredictDate.Day <= DateTime.Now.Day)
+            if (PredictDate.Year < DateTime.Now.Year)
+            {
+                ErrorMessagePredVisibility = Visibility.Visible;
+                return;
+            }
+            else if (PredictDate.Year == DateTime.Now.Year && PredictDate.Month < DateTime.Now.Month)
+            {
+                ErrorMessagePredVisibility = Visibility.Visible;
+                return;
+            }
+            else if (PredictDate.Year == DateTime.Now.Year && PredictDate.Month == DateTime.Now.Month && PredictDate.Day <= DateTime.Now.Day)
             {
                 ErrorMessagePredVisibility = Visibility.Visible;
                 return;
