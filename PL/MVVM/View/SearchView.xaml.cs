@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.ViewEngines;
+using Microsoft.Win32;
 using PL.MVVM.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ namespace PL.MVVM.View
         }
         private async void GameTile_PlusButtonClicked(object sender, string gameName)
         {
-
+            viewM.SaveGame(gameName);
         }
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.MVVM.View"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="PL.MVVM.View.GamesView"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         d:DesignHeight="500" d:DesignWidth="850">
     <Grid>
@@ -32,5 +33,12 @@
 
             </syncfusion:Carousel.ItemTemplate>
         </syncfusion:Carousel>
+        <Button Name="MinusButton" HorizontalAlignment="Left" Margin="752,388,0,0" VerticalAlignment="Top" 
+                Height="44" Width="69" Background="#FFCF5014" Click="MinusButton_Click" >
+            <materialDesign:PackIcon Kind="Minus" Foreground="White" Height="76" Width="41" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Button>
     </Grid>
+
+
+
 </UserControl>

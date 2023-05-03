@@ -92,9 +92,12 @@ namespace DAL
 
         public async Task DeleteGameAsync(Games game)
         {
-            if (_context.Games.Contains(game))
-                _context.Games.Remove(game);
-            await _context.SaveChangesAsync();
+            var gameToDelete = _context.Games.SingleOrDefault(g => g.Name == game.Name);
+            if (gameToDelete != null)
+            {
+                _context.Games.Remove(gameToDelete);
+                await _context.SaveChangesAsync();
+            }
         }
 
         public async Task DeleteGameFromCatalogue(Catalogue catalogue, Games game)

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Mono.Unix.Native;
 using PL.MVVM.ViewModel;
 using Syncfusion.Windows.Shared;
 
@@ -36,6 +37,10 @@ namespace PL.MVVM.View
 
             //this.GameCatalogue.ItemsSource = viewM.CarouselImages;
             //this.GameCatalogue.ItemsSource = viewM.ImageCollection;
+        }
+        private void MinusButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewM.DeleteGame();
         }
     }
 }

@@ -10,6 +10,8 @@ namespace BL
         Task<List<PlayersTime>> RetrieveNumberOfPlayersTime(int numplayers, DateTime start, DateTime end);
         Task<Servers> RetrieveServerFromApiAsync(string gameName);
         Task StoreGameAsync(string searchTerm);
+        Task SaveGameAsync(Games game);
+        Task DeleteGame(Games game);
         Task StoreGamesAsync(string searchTerm);
         Task StoreServerAsync(string searchTerm);
         Task testtest();

@@ -50,15 +50,21 @@ def get_data_estimate(game_name):
 
     games[game_name][PLAYERS_COUNT] = players_count
     # add to CPU usage
-    viewer_percentage = games[game_name][PLAYERS_COUNT] / constants.MAX_PLAYES_COUNT
+    if games[game_name][PLAYERS_COUNT]>1000000:
+        viewer_percentage = games[game_name][PLAYERS_COUNT] / constants.MAX_PLAYES_COUNT
+    elif games[game_name][PLAYERS_COUNT]>450000:
+        viewer_percentage = games[game_name][PLAYERS_COUNT] / 1000000
+    elif games[game_name][PLAYERS_COUNT]>100000:
+        viewer_percentage = games[game_name][PLAYERS_COUNT] / 450000
+    else:
+        viewer_percentage = games[game_name][PLAYERS_COUNT] / 100000
+
     if viewer_percentage > 0.8:
         cpu_usage = random.uniform(0.75, 0.99)
     elif viewer_percentage > 0.6:
         cpu_usage = random.uniform(0.55, 0.85)
-    elif viewer_percentage > 0.4:
-        cpu_usage = random.uniform(0.35, 0.65)
     else:
-        cpu_usage = random.uniform(0.1, 0.45)
+        cpu_usage = random.uniform(0.4, 0.7)
 
     # add to RAM usage
     if games[game_name][RAM_SIZE] < 8:
@@ -70,8 +76,8 @@ def get_data_estimate(game_name):
     else:
         ram_usage = games[game_name][RAM_SIZE] * 0.2
 
-    games[game_name][CPU_USAGE] = cpu_usage
-    games[game_name][RAM_USAGE] = ram_usage
+    games[game_name][CPU_USAGE] = cpu_usage * 100
+    games[game_name][RAM_USAGE] = (ram_usage / games[game_name][RAM_SIZE]) * 100
 
     return players_count, cpu_usage, ram_usage
 

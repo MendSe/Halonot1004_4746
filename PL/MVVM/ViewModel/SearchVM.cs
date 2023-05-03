@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL.Entities;
 using IronPython.Runtime.Operations;
+using System.Windows;
 
 namespace PL.MVVM.ViewModel
 {
@@ -37,6 +38,14 @@ namespace PL.MVVM.ViewModel
         {
             games = await myBL.RetrieveGamesFromApiAsync(gameName);
             GameList = new ObservableCollection<Games>(games);
+        }
+        public async void SaveGame(string GameName)
+        {
+            foreach(Games game in games)
+            {
+                if (game.Name == GameName) await myBL.SaveGameAsync(game);
+            }
+            MessageBox.Show("Game added successfully to the Catalogue", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
 

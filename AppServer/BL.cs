@@ -40,7 +40,15 @@ namespace BL
             await myDal.AddGameAsync(game);
             await myDal.testtest();
         }
-
+        //no need api
+        public async Task SaveGameAsync(Games game)
+        {
+            await myDal.AddGameAsync(game);
+        }
+        public async Task DeleteGame(Games game)
+        {
+            await myDal.DeleteGameAsync(game);
+        }
         public async Task<List<Games>> RetrieveGamesFromApiAsync(string searchTerm)
         {
 
@@ -106,7 +114,7 @@ namespace BL
                     ReleaseDate = firstGame["first_release_date"]?.Value<long?>() != null ? DateTimeOffset.FromUnixTimeSeconds((long)firstGame["first_release_date"]).UtcDateTime : new DateTime(1753, 1, 1),
                     CoverPath = null,
                     //CoverUrl = firstGame["cover"]?.ToString()
-                    CoverUrl = firstGame["cover"]["url"].ToString(),
+                    CoverUrl = firstGame["cover"] != null ? "https:" + (firstGame["cover"]["url"]?.ToString()).Replace("t_thumb", "t_cover_big") : null,
                 };
 
                 // Return the list of games.

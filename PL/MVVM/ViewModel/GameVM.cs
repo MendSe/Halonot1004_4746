@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using DAL.Entities;
@@ -33,6 +34,23 @@ namespace PL.MVVM.ViewModel
                 }
             }
         }
+        public async void DeleteGame()
+        {
+            await myBL.DeleteGame(games[SelectedIndex]);
+            MessageBox.Show("Game removed successfully from the Catalogue", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            games = new ObservableCollection<Games>(myBL.GetGames());
+            OnPropertyChanged(nameof(games));
+
+            ImageCollection.Clear();
+            foreach (var game in games)
+            {
+                ImageCollection.Add(new CarouselModel(game));
+            }
+            OnPropertyChanged(nameof(ImageCollection));
+            OnPropertyChanged(nameof(CurrentDescription));
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
