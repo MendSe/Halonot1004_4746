@@ -47,5 +47,10 @@ namespace PL.MVVM.View
         {
             DescriptionTextBlock.Text = string.Empty;
         }
+
+        private void Game3_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

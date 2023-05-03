@@ -16,6 +16,7 @@
     <None Remove="images\Isaac.jpg" />
     <None Remove="images\meats.png" />
     <None Remove="images\PUBG.jpg" />
+    <None Remove="images\Search.png" />
     <None Remove="images\ServerBBackground.png" />
     <None Remove="images\TabAnalyze.png" />
     <None Remove="images\TabHealth.png" />
@@ -46,6 +47,7 @@
     <Resource Include="images\Isaac.jpg" />
     <Resource Include="images\meats.png" />
     <Resource Include="images\PUBG.jpg" />
+    <Resource Include="images\Search.png" />
     <Resource Include="images\ServerBBackground.png" />
     <Resource Include="images\TabAnalyze.png" />
     <Resource Include="images\TabHealth.png" />

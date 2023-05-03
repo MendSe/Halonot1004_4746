@@ -15,6 +15,7 @@
             <RowDefinition Height="4*"/>
             <RowDefinition Height="21*"/>
         </Grid.RowDefinitions>
+        <Image Source="pack://application:,,,/PL;component/images/Search.png" Stretch="UniformToFill" Margin="0,-5,0,-1" Grid.RowSpan="2"/>
         <Grid>
             <TextBox x:Name="SearchBox" HorizontalAlignment="Left" Margin="99,10,0,0" TextWrapping="Wrap" Text="" TextAlignment="Left" VerticalAlignment="Top"
                      Width="600" Height="55" Background="#FF838383" FontSize="22" FontFamily="Cascadia Code"/>
@@ -26,20 +27,20 @@
         <local:GameTile x:Name="Game1" GameImagePath="{Binding GameList[0].CoverUrl}" GameName="{Binding GameList[0].Name}" GameDescription="{Binding GameList[0].Summary}" HorizontalAlignment="Left" Margin="10,60,0,0" Grid.Row="1" VerticalAlignment="Top" PlusButtonClicked="GameTile_PlusButtonClicked" 
                         GameDescriptionMouseEnter="GameTile_GameDescriptionMouseEnter" GameDescriptionMouseLeave="GameTile_GameDescriptionMouseLeave"/>
 
-        <local:GameTile x:Name="Game2" GameImagePath="{Binding GameList[1].CoverUrl}" GameName="{Binding GameList[1].Name}" GameDescription="{Binding GameList[1].Summary}" HorizontalAlignment="Left" Margin="178,60,0,0" Grid.Row="1" VerticalAlignment="Top" PlusButtonClicked ="GameTile_PlusButtonClicked"
+        <local:GameTile x:Name="Game2" GameImagePath="{Binding GameList[1].CoverUrl}" GameName="{Binding GameList[1].Name}" GameDescription="{Binding GameList[1].Summary}" HorizontalAlignment="Left" Margin="182,60,0,0" Grid.Row="1" VerticalAlignment="Top" PlusButtonClicked ="GameTile_PlusButtonClicked"
                         GameDescriptionMouseEnter="GameTile_GameDescriptionMouseEnter" GameDescriptionMouseLeave="GameTile_GameDescriptionMouseLeave"/>
 
-        <local:GameTile x:Name="Game3" GameImagePath="{Binding GameList[2].CoverUrl}" GameName="{Binding GameList[2].Name}" GameDescription="{Binding GameList[2].Summary}" HorizontalAlignment="Left" Margin="341,60,0,0" Grid.Row="1" VerticalAlignment="Top" PlusButtonClicked ="GameTile_PlusButtonClicked"
+        <local:GameTile x:Name="Game3" GameImagePath="{Binding GameList[2].CoverUrl}" GameName="{Binding GameList[2].Name}" GameDescription="{Binding GameList[2].Summary}" HorizontalAlignment="Left" Margin="347,60,0,0" Grid.Row="1" VerticalAlignment="Top" PlusButtonClicked ="GameTile_PlusButtonClicked"
+                        GameDescriptionMouseEnter="GameTile_GameDescriptionMouseEnter" GameDescriptionMouseLeave="GameTile_GameDescriptionMouseLeave" Loaded="Game3_Loaded"/>
+
+        <local:GameTile x:Name="Game4" GameImagePath="{Binding GameList[3].CoverUrl}" GameName="{Binding GameList[3].Name}" GameDescription="{Binding GameList[3].Summary}" HorizontalAlignment="Left" Margin="516,60,0,0" Grid.Row="1" VerticalAlignment="Top" PlusButtonClicked ="GameTile_PlusButtonClicked"
                         GameDescriptionMouseEnter="GameTile_GameDescriptionMouseEnter" GameDescriptionMouseLeave="GameTile_GameDescriptionMouseLeave"/>
 
-        <local:GameTile x:Name="Game4" GameImagePath="{Binding GameList[3].CoverUrl}" GameName="{Binding GameList[3].Name}" GameDescription="{Binding GameList[3].Summary}" HorizontalAlignment="Left" Margin="509,60,0,0" Grid.Row="1" VerticalAlignment="Top" PlusButtonClicked ="GameTile_PlusButtonClicked"
-                        GameDescriptionMouseEnter="GameTile_GameDescriptionMouseEnter" GameDescriptionMouseLeave="GameTile_GameDescriptionMouseLeave"/>
-
-        <local:GameTile x:Name="Game5" GameImagePath="{Binding GameList[4].CoverUrl}" GameName="{Binding GameList[4].Name}" GameDescription="{Binding GameList[4].Summary}" HorizontalAlignment="Left" Margin="677,60,0,0" Grid.Row="1" VerticalAlignment="Top" PlusButtonClicked ="GameTile_PlusButtonClicked"
+        <local:GameTile x:Name="Game5" GameImagePath="{Binding GameList[4].CoverUrl}" GameName="{Binding GameList[4].Name}" GameDescription="{Binding GameList[4].Summary}" HorizontalAlignment="Left" Margin="687,60,0,0" Grid.Row="1" VerticalAlignment="Top" PlusButtonClicked ="GameTile_PlusButtonClicked"
                         GameDescriptionMouseEnter="GameTile_GameDescriptionMouseEnter" GameDescriptionMouseLeave="GameTile_GameDescriptionMouseLeave"/>
 
         <!-- ... -->
-        <TextBlock x:Name="DescriptionTextBlock" Text="" Grid.Row="1" VerticalAlignment="Top" Margin="0,215,0,0" TextWrapping="Wrap" FontSize="12" Foreground="White" Height="173" FontFamily="Cascadia Code"/>
+        <TextBlock x:Name="DescriptionTextBlock" Text="" Grid.Row="1" VerticalAlignment="Top" Margin="28,237,32,0" TextWrapping="Wrap" FontSize="12" Foreground="White" Height="173" FontFamily="Cascadia Code"/>
 
 
     </Grid>
