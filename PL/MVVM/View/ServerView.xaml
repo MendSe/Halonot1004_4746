@@ -8,13 +8,16 @@
              xmlns:lc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              xmlns:geared="clr-namespace:LiveCharts.Geared;assembly=LiveCharts.Geared"
              mc:Ignorable="d" 
-             Background="Black"
              d:DesignHeight="500" d:DesignWidth="850">
+
     <Grid>
+                
         <Grid.RowDefinitions>
             <RowDefinition Height="17*"/>
             <RowDefinition Height="28*"/>
         </Grid.RowDefinitions>
+
+        <Image Source="pack://application:,,,/PL;component/images/ServerBBackground.png" Stretch="UniformToFill" Margin="0,-4,0,264" Grid.RowSpan="2"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
@@ -53,6 +56,8 @@
                 <TabControl x:Name="ContentTabControl" TabStripPlacement="Top">
                     <TabItem Header="Health">
                         <Grid x:Name="HealthGrid">
+                            <!-- ici -->
+                            <Image Source="pack://application:,,,/PL;component/images/TabHealth.png" Stretch="UniformToFill"/>
                             <lc:AngularGauge Name="gaugeCPU" Margin="31,26,701,118" Height="120" Width="120"                            
                             NeedleFill="{DynamicResource MaterialDesignBody}"
                             TicksForeground="{DynamicResource MaterialDesignBody}"
@@ -66,7 +71,7 @@
                                     <lc:AngularSection FromValue="66.67" ToValue="100" Fill="Red"/>
                                 </lc:AngularGauge.Sections>
                             </lc:AngularGauge>
-                            <lc:AngularGauge Name="gaugeRAM" Margin="705,26,25,117" Height="120" Width="120"
+                            <lc:AngularGauge Name="gaugeRAM" Margin="695,26,25,117" Height="120" Width="120"
                             NeedleFill="{DynamicResource MaterialDesignBody}"
                             TicksForeground="{DynamicResource MaterialDesignBody}"
                             Foreground="WhiteSmoke"
@@ -85,8 +90,8 @@
                                        Text="{Binding CurrentServer.GameName}" FontFamily="Cascadia Code"/>
                             <Label x:Name="CPULabel" Content="CPU Usage" HorizontalAlignment="Left" Margin="50,154,0,0" VerticalAlignment="Top" Height="34" Width="82"
                                    Foreground="White" FontSize="14" FontFamily="Cascadia Code"/>
-                            <Label x:Name="RamLabel" Content="RAM Usage" HorizontalAlignment="Left" Margin="724,154,0,0" VerticalAlignment="Top" Height="34" Width="82"
-                                Foreground="White" FontSize="14" FontFamily="Cascadia Code" RenderTransformOrigin="0.617,0.515"/>
+                            <Label x:Name="RamLabel" Content="RAM Usage" HorizontalAlignment="Left" Margin="719,154,0,0" VerticalAlignment="Top" Height="34" Width="82"
+                                Foreground="White" FontSize="14" FontFamily="Cascadia Code" RenderTransformOrigin="0.366,0.597"/>
                             <Label x:Name="TitleLabel" Content="Informations on the Server:" HorizontalAlignment="Center" Margin="0,28,0,0" VerticalAlignment="Top" Height="34" Width="262"
                                 Foreground="White" FontSize="16" FontFamily="Cascadia Code" RenderTransformOrigin="0.617,0.515"/>
                             <TextBlock x:Name="MAXCPUText" HorizontalAlignment="Left" Margin="239,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="115" Foreground="White" TextAlignment="Center" FontSize="18" 
