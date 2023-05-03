@@ -17,7 +17,10 @@ public class IGDBApi
         _clientId = clientId;
         _clientSecret = clientSecret;
     }
-
+    /// <summary>
+    /// This function send the access request and return the access token
+    /// </summary>
+    /// <returns></returns>
     public async Task<string> AuthenticateAsync()
     {
         RestClient client = new RestClient(BaseUrl);
@@ -47,7 +50,12 @@ public class IGDBApi
          return false;
          */
     }
-
+    /// <summary>
+    /// This function makes requerst asynchronously
+    /// </summary>
+    /// <param name="endpoint"></param>
+    /// <param name="query"></param>
+    /// <returns></returns>
     private async Task<string> MakeRequestAsync(string endpoint, string query)
     {
         RestClient client = new RestClient(ApiUrl);
@@ -69,7 +77,12 @@ public class IGDBApi
 
         return null;
     }
-
+    /// <summary>
+    /// This function search for games in the api
+    /// </summary>
+    /// <param name="searchTerm"></param>
+    /// <param name="limit"></param>
+    /// <returns></returns>
     public async Task<string> SearchGamesAsync(string searchTerm, int limit = 10)//limit = 10
     {
         //name,  summary, platforms.name, release_dates.date,
@@ -80,7 +93,11 @@ public class IGDBApi
         return await MakeRequestAsync("games", query);
     }
     //"img-responsive cover_uniform game-card-image cover_big cover_big"
-
+    /// <summary>
+    /// This function is used to get the game cover
+    /// </summary>
+    /// <param name="gameId">the game id </param>
+    /// <returns></returns>
     public async Task<string> GetGameCoverAsync(int gameId)
     {
         string endpoint = "covers";

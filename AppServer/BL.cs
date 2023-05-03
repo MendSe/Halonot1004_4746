@@ -22,6 +22,11 @@ namespace BL
             myDal=dal;
         }
         #region API
+        /// <summary>
+        /// This function retrieves a list of game from another function and send them to the dal
+        /// </summary>
+        /// <param name="searchTerm">the name of the games</param> 
+        /// <returns></returns>
         public async Task StoreGamesAsync(string searchTerm)
         {
             // Retrieve games info from IGDB API
@@ -31,6 +36,11 @@ namespace BL
             await myDal.AddGamesAsync(games);
             await myDal.testtest();       
         }
+        /// <summary>
+        /// This function retrieves a game from another function and send it to the dal
+        /// </summary>
+        /// <param name="searchTerm">the name of the game</param> 
+        /// <returns></returns>
         public async Task StoreGameAsync(string searchTerm)
         {
             // Retrieve games info from IGDB API
@@ -40,15 +50,29 @@ namespace BL
             await myDal.AddGameAsync(game);
             await myDal.testtest();
         }
-        //no need api
+        /// <summary>
+        /// this function send a game to the dal to be saved
+        /// </summary>
+        /// <param name="game">the game</param> 
+        /// <returns></returns>
         public async Task SaveGameAsync(Games game)
         {
             await myDal.AddGameAsync(game);
         }
+        /// <summary>
+        /// this function send a game to the dal to be deleted
+        /// </summary>
+        /// <param name="game"></param>
+        /// <returns></returns>
         public async Task DeleteGame(Games game)
         {
             await myDal.DeleteGameAsync(game);
         }
+        /// <summary>
+        /// This function retrieve a list of games from the api
+        /// </summary>
+        /// <param name="searchTerm">the games we want to retrieve</param> 
+        /// <returns></returns>
         public async Task<List<Games>> RetrieveGamesFromApiAsync(string searchTerm)
         {
 
@@ -86,6 +110,12 @@ namespace BL
             // Return the list of games.
             return games;
         }
+
+        /// <summary>
+        /// This function retrieve a single game from the api
+        /// </summary>
+        /// <param name="searchTerm">the game we want to retrieve</param> 
+        /// <returns></returns>
         public async Task<Games> RetrieveGameFromApiAsync(string searchTerm)
         {
 
@@ -123,7 +153,11 @@ namespace BL
             return null;
         }
 
-
+        /// <summary>
+        /// This function retrieve a server from api and send it to the DAL
+        /// </summary>
+        /// <param name="searchTerm">the server name</param> 
+        /// <returns></returns>
         public async Task StoreServerAsync(string searchTerm)
         {
             // Retrieve games info from IGDB API
@@ -135,6 +169,12 @@ namespace BL
 
 
         }
+
+        /// <summary>
+        /// This function retrieve a server from the emulator
+        /// </summary>
+        /// <param name="gameName">the server name</param> 
+        /// <returns></returns>
         public async Task<Servers> RetrieveServerFromApiAsync(string gameName)
         {
             //var apiUrl = $"http://localhost:5000/GetData/{gameName}/{start_time}/{end_time}";
@@ -164,7 +204,13 @@ namespace BL
         #endregion API
 
         #region Emulator
-
+        /// <summary>
+        /// This fonction calculate and predivt the number of players for a time interval
+        /// </summary>
+        /// <param name="numplayers">the current number of player</param>
+        /// <param name="start">start date/hour</param>
+        /// <param name="end">end date/hour</param>
+        /// <returns></returns>
         public async Task<List<PlayersTime>> RetrieveNumberOfPlayersTime(int numplayers, DateTime start, DateTime end)
         {
             
@@ -201,7 +247,11 @@ namespace BL
             }
             return playersTimes;
         }
-
+        /// <summary>
+        /// This fonction returns the a factor depending of the day and the month for the prediction
+        /// </summary>
+        /// <param name="time">the current day</param> 
+        /// <returns></returns>
         public double CoefDayMonth(DateTime time)
         {
             double coef = 1;

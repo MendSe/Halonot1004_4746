@@ -28,7 +28,11 @@ namespace DAL
         }
 
         #region ADD
-
+        /// <summary>
+        /// This function adds a list of game to the database
+        /// </summary>
+        /// <param name="games">the list of games</param>
+        /// <returns></returns>
         public async Task AddGamesAsync(List<Games> games)
         {
            // _context.Games.AddRange(games)
@@ -39,6 +43,11 @@ namespace DAL
             }
             //await _context.SaveChangesAsync();
         }
+        /// <summary>
+        /// This function adds one game to the database
+        /// </summary>
+        /// <param name="game"></param>
+        /// <returns></returns>
         public async Task AddGameAsync(Games game)
         {
             // _context.Games.AddRange(games)
@@ -52,6 +61,12 @@ namespace DAL
             }
             
         }
+
+        /// <summary>
+        /// This functions add a server to the database
+        /// </summary>
+        /// <param name="server"></param>
+        /// <returns></returns>
         public async Task AddServerAsync(Servers server)
         {
             var existingObject = _context.Servers.Find(server.GameName);
@@ -71,25 +86,15 @@ namespace DAL
             }
 
         }
-
-        public async Task AddGameToCatalogue(Catalogue catalogue, Games game)
-        {
-            _context.Catalogue.Find(catalogue)?.ListGames.Add(game);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task AddCatalogue(Catalogue catalogue)
-        {
-            if (_context.Catalogue.Contains(catalogue))
-                return;
-            _context.Catalogue.Add(catalogue);
-            await _context.SaveChangesAsync();
-        }
-
+        
         #endregion ADD
 
         #region DELETE
-
+        /// <summary>
+        /// This function delete a game from the database
+        /// </summary>
+        /// <param name="game"></param>
+        /// <returns></returns>
         public async Task DeleteGameAsync(Games game)
         {
             var gameToDelete = _context.Games.SingleOrDefault(g => g.Name == game.Name);
@@ -100,19 +105,11 @@ namespace DAL
             }
         }
 
-        public async Task DeleteGameFromCatalogue(Catalogue catalogue, Games game)
-        {
-            _context.Catalogue.Find(catalogue)?.ListGames?.Remove(game);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task DeleteCatalogue(Catalogue catalogue)
-        {
-            if (_context.Catalogue.Contains(catalogue)) 
-                _context.Catalogue.Remove(catalogue);
-            await _context.SaveChangesAsync();
-        }
-
+        /// <summary>
+        /// This function delete a server from the database
+        /// </summary>
+        /// <param name="server"></param>
+        /// <returns></returns>
         public async Task DeleteServer(Servers server)
         {
             if (_context.Servers.Contains(server)) 
@@ -164,6 +161,34 @@ namespace DAL
 
         #endregion Get all
 
+        #region Not Used
+        public async Task AddGameToCatalogue(Catalogue catalogue, Games game)
+        {
+            _context.Catalogue.Find(catalogue)?.ListGames.Add(game);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task AddCatalogue(Catalogue catalogue)
+        {
+            if (_context.Catalogue.Contains(catalogue))
+                return;
+            _context.Catalogue.Add(catalogue);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteGameFromCatalogue(Catalogue catalogue, Games game)
+        {
+            _context.Catalogue.Find(catalogue)?.ListGames?.Remove(game);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteCatalogue(Catalogue catalogue)
+        {
+            if (_context.Catalogue.Contains(catalogue))
+                _context.Catalogue.Remove(catalogue);
+            await _context.SaveChangesAsync();
+        }
+        #endregion Not Used
 
         public async Task testtest()
         {
