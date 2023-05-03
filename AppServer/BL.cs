@@ -63,11 +63,11 @@ namespace BL
                 Games newGame = new Games
                 {
                     Game_Id = game["id"].Value<int>(),
-                    Name = game["name"].ToString(),
+                    Name = game["name"]?.ToString(),
                     Summary = game["summary"]?.ToString(),
                     ReleaseDate = game["first_release_date"]?.Value<long?>() != null ? DateTimeOffset.FromUnixTimeSeconds((long)game["first_release_date"]).UtcDateTime : new DateTime(1753, 1, 1),
                     CoverPath = null,
-                    CoverUrl = "https:"+(game["cover"]["url"].ToString()).Replace("t_thumb", "t_cover_big"),
+                    CoverUrl = game["cover"] != null ? "https:" + (game["cover"]["url"]?.ToString()).Replace("t_thumb", "t_cover_big") : null,
                     //CoverImageUrl = game["cover"]?["url"]?.ToString(),
                 };
                 games.Add(newGame);

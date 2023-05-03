@@ -36,7 +36,6 @@ namespace PL.MVVM.ViewModel
         public async void Search(string gameName)
         {
             games = await myBL.RetrieveGamesFromApiAsync(gameName);
-            foreach (Games game in games) { game.CoverUrl.Replace("t_thumb","t_cover_big"); }
             GameList = new ObservableCollection<Games>(games);
         }
 

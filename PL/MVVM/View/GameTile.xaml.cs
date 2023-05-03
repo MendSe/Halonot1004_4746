@@ -94,7 +94,12 @@ namespace PL.MVVM.View
         {
             if (!string.IsNullOrEmpty(GameImagePath))
             {
+                GameImage.Source = null; // Set the source to null before updating the image
                 GameImage.Source = new BitmapImage(new Uri(GameImagePath, UriKind.RelativeOrAbsolute));
+            }
+            else
+            {
+                GameImage.Source = null; // Set the source to null when the GameImagePath is empty or null
             }
         }
     }
