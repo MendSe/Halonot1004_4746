@@ -79,7 +79,7 @@ namespace PL.MVVM.ViewModel
     {
         public CarouselModel(Games game)
         {
-            Image = ("https:"+game.CoverUrl).Replace("t_thumb", "t_cover_big");
+            Image = game.CoverUrl;
             Description = game.Summary+ (game.ReleaseDate != new DateTime(1753, 1, 1)? "\nRelease date: " + game.ReleaseDate.ToString():"");
             
         }

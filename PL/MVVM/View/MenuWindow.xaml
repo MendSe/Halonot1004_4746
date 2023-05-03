@@ -112,7 +112,7 @@
                     Content="SEARCH"
                     Click="Button_OnClick"
                     BorderBrush="Transparent"
-                    Command="{Binding solarSystemCommand}" Grid.Column="4" Margin="0,0,3,0"/>
+                    Command="{Binding ShowSearchCommand}" Grid.Column="4" Margin="0,0,3,0"/>
 
                 
             </Grid>

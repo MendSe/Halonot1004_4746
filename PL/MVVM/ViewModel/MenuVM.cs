@@ -27,12 +27,16 @@ namespace PL.MVVM.ViewModel
         public ICommand ShowServerCommand { get; set; }
         public ICommand ShowAnalyzeCommand { get; set; }
         public ICommand ShowGamesCommand { get; set; }
+        public ICommand ShowSearchCommand { get; set; }
+
+
 
         public MenuVM()
         {
             ShowServerCommand = new RelayCommand(o => ShowServer());
             ShowAnalyzeCommand = new RelayCommand(o => ShowAnalyze());
             ShowGamesCommand = new RelayCommand(o => ShowGames());
+            ShowSearchCommand = new RelayCommand(o => ShowSearch());
         }
         
         private void ShowServer()
@@ -48,6 +52,10 @@ namespace PL.MVVM.ViewModel
         private void ShowGames()
         {
             CurrentView = new GamesView();
+        }
+        private void ShowSearch()
+        {
+            CurrentView = new SearchView();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

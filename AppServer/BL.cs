@@ -47,7 +47,7 @@ namespace BL
             IGDBApi igdbClient = new IGDBApi(clientID,secretID);
 
             // Search for games.
-            string searchResult = await igdbClient.SearchGamesAsync(searchTerm);
+            string searchResult = await igdbClient.SearchGamesAsync(searchTerm,5);
 
             // Deserialize the search result.
             JArray jsonArray = JArray.Parse(searchResult);
@@ -67,7 +67,7 @@ namespace BL
                     Summary = game["summary"]?.ToString(),
                     ReleaseDate = game["first_release_date"]?.Value<long?>() != null ? DateTimeOffset.FromUnixTimeSeconds((long)game["first_release_date"]).UtcDateTime : new DateTime(1753, 1, 1),
                     CoverPath = null,
-                    CoverUrl = game["cover.url"]?.ToString()
+                    CoverUrl = "https:"+(game["cover"]["url"].ToString()).Replace("t_thumb", "t_cover_big"),
                     //CoverImageUrl = game["cover"]?["url"]?.ToString(),
                 };
                 games.Add(newGame);

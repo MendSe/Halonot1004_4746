@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="PL.MVVM.View.SearchView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PL.MVVM.View"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:lc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:geared="clr-namespace:LiveCharts.Geared;assembly=LiveCharts.Geared"
+             mc:Ignorable="d" 
+             Background="Black"
+             d:DesignHeight="500" d:DesignWidth="850">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="21*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <TextBox x:Name="SearchBox" HorizontalAlignment="Left" Margin="99,10,0,0" TextWrapping="Wrap" Text="" TextAlignment="Left" VerticalAlignment="Top"
+                     Width="600" Height="55" Background="#FF838383" FontSize="22" FontFamily="Cascadia Code"/>
+            <Button Click="SearchButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="699,10,0,0" Width="55" Height="55" BorderBrush="Transparent" Background="#FF5A5A5A">
+                <materialDesign:PackIcon Kind="Magnify" Width="47" Height="52" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-30,0,-30,0" />
+            </Button>
+        </Grid>
+        <!-- ... -->
+        <local:GameTile x:Name="Game1" GameImagePath="{Binding GameList[0].CoverUrl}" GameName="{Binding GameList[0].Name}" GameDescription="{Binding GameList[0].Summary}" HorizontalAlignment="Left" Margin="10,60,0,0" Grid.Row="1" VerticalAlignment="Top" PlusButtonClicked="GameTile_PlusButtonClicked" 
+                        GameDescriptionMouseEnter="GameTile_GameDescriptionMouseEnter" GameDescriptionMouseLeave="GameTile_GameDescriptionMouseLeave"/>
+
+        <local:GameTile x:Name="Game2" GameImagePath="{Binding GameList[1].CoverUrl}" GameName="{Binding GameList[1].Name}" GameDescription="{Binding GameList[1].Summary}" HorizontalAlignment="Left" Margin="178,60,0,0" Grid.Row="1" VerticalAlignment="Top" PlusButtonClicked ="GameTile_PlusButtonClicked"
+                        GameDescriptionMouseEnter="GameTile_GameDescriptionMouseEnter" GameDescriptionMouseLeave="GameTile_GameDescriptionMouseLeave"/>
+
+        <local:GameTile x:Name="Game3" GameImagePath="{Binding GameList[2].CoverUrl}" GameName="{Binding GameList[2].Name}" GameDescription="{Binding GameList[2].Summary}" HorizontalAlignment="Left" Margin="341,60,0,0" Grid.Row="1" VerticalAlignment="Top" PlusButtonClicked ="GameTile_PlusButtonClicked"
+                        GameDescriptionMouseEnter="GameTile_GameDescriptionMouseEnter" GameDescriptionMouseLeave="GameTile_GameDescriptionMouseLeave"/>
+
+        <local:GameTile x:Name="Game4" GameImagePath="{Binding GameList[3].CoverUrl}" GameName="{Binding GameList[3].Name}" GameDescription="{Binding GameList[3].Summary}" HorizontalAlignment="Left" Margin="509,60,0,0" Grid.Row="1" VerticalAlignment="Top" PlusButtonClicked ="GameTile_PlusButtonClicked"
+                        GameDescriptionMouseEnter="GameTile_GameDescriptionMouseEnter" GameDescriptionMouseLeave="GameTile_GameDescriptionMouseLeave"/>
+
+        <local:GameTile x:Name="Game5" GameImagePath="{Binding GameList[4].CoverUrl}" GameName="{Binding GameList[4].Name}" GameDescription="{Binding GameList[4].Summary}" HorizontalAlignment="Left" Margin="677,60,0,0" Grid.Row="1" VerticalAlignment="Top" PlusButtonClicked ="GameTile_PlusButtonClicked"
+                        GameDescriptionMouseEnter="GameTile_GameDescriptionMouseEnter" GameDescriptionMouseLeave="GameTile_GameDescriptionMouseLeave"/>
+
+        <!-- ... -->
+        <TextBlock x:Name="DescriptionTextBlock" Text="" Grid.Row="1" VerticalAlignment="Top" Margin="0,215,0,0" TextWrapping="Wrap" FontSize="16" Foreground="White" Height="173" FontFamily="Cascadia Code"/>
+
+
+    </Grid>
+</UserControl>
