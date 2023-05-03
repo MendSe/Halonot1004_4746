@@ -20,6 +20,7 @@ namespace PL.MVVM.View
 {
     /// <summary>
     /// Interaction logic for Search.xaml
+    /// User control controller from the menu window used to search games and add them to Catalogue
     /// </summary>
     public partial class SearchView : UserControl
     {

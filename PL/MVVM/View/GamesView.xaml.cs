@@ -38,6 +38,11 @@ namespace PL.MVVM.View
             //this.GameCatalogue.ItemsSource = viewM.CarouselImages;
             //this.GameCatalogue.ItemsSource = viewM.ImageCollection;
         }
+        /// <summary>
+        /// Minus button to erase a game from catalogue
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MinusButton_Click(object sender, RoutedEventArgs e)
         {
             viewM.DeleteGame();

@@ -185,6 +185,9 @@ namespace PL.MVVM.ViewModel
             ChartSeries[2].Values.Add(high);
             Mouse.OverrideCursor = null;
         }
+        /// <summary>
+        /// Function Predict triggered by button Predict to predict the number of players at a time given
+        /// </summary>
         private async void Predict()
         {
             if (PredictDate.Year < DateTime.Now.Year)

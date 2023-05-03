@@ -19,6 +19,7 @@ namespace PL
 {
     /// <summary>
     /// Interaction logic for MenuWindow.xaml
+    /// main window to choose for the different functionnalities
     /// </summary>
     public partial class MenuWindow : Window
     {

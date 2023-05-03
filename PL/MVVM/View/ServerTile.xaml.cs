@@ -17,12 +17,14 @@ namespace PL.MVVM.View
 {
     /// <summary>
     /// Interaction logic for ServerTile.xaml
-    /// </summary>
-    /// <summary>
-    /// Interaction logic for GameTile.xaml
+    /// User control controlled used in the ServerView and responsible for the images and Health and Analyze buttons
+    /// with fonctionnalities like hovering on the image to make the button appear
     /// </summary>
     public partial class ServerTile : UserControl
     {
+        /// <summary>
+        /// Property to delegate the image path
+        /// </summary>
         public static readonly DependencyProperty GameImagePathProperty = DependencyProperty.Register(
             "GameImagePath",
             typeof(string),
@@ -40,20 +42,32 @@ namespace PL.MVVM.View
         typeof(ServerTile),
         new PropertyMetadata(string.Empty));
 
+        /// <summary>
+        /// Property to delegate the game name for other functionnalities on the ServerView like display 
+        /// the number of players on the server
+        /// </summary>
         public string GameName
         {
             get => (string)GetValue(GameNameProperty);
             set => SetValue(GameNameProperty, value);
         }
-
+        /// <summary>
+        /// Load the Tile
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ServerTile_Loaded(object sender, RoutedEventArgs e)
         {
             GameImage.Source = new BitmapImage(new Uri(GameImagePath, UriKind.RelativeOrAbsolute));
         }
-
+        /// <summary>
+        /// Event handlers for the buttons
+        /// </summary>
         public event EventHandler<string> HealthButtonClicked;
         public event EventHandler<string> AnalyzeButtonClicked;
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public ServerTile()
         {
             InitializeComponent();

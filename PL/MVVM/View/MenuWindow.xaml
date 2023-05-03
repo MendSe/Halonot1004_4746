@@ -9,6 +9,7 @@
         Title="MenuWindow" Height="580" Width="850"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
+        Background="DarkBlue"
         WindowStyle="None">
     <Window.Resources>
 

@@ -205,7 +205,8 @@ namespace BL
 
         #region Emulator
         /// <summary>
-        /// This fonction calculate and predivt the number of players for a time interval
+        /// This fonction calculate and predivt the number of players for a time interval and it's using a sinus function 
+        /// which is modified to more accuracy on a reflexion of the reality
         /// </summary>
         /// <param name="numplayers">the current number of player</param>
         /// <param name="start">start date/hour</param>
@@ -214,18 +215,11 @@ namespace BL
         public async Task<List<PlayersTime>> RetrieveNumberOfPlayersTime(int numplayers, DateTime start, DateTime end)
         {
             
-            //Servers serv = await RetrieveServerFromApiAsync(gamename);
             DateTime now = DateTime.Now;
             now = new DateTime(now.Year, now.Month, now.Day, now.Hour, 0, 0);
             double coef = now.Hour-12;
             double x = (coef/12)*Math.PI;
 
-            //double test = Math.Sin(Math.PI);
-            //int sign = coef < 0 ? 1 : -1;
-            //int numOfPlayers = (int)(serv.PlayersCount * ((float)2 / 3 * Math.Sin(((coef * 15) * Math.PI) / 180) + 1));
-            //double b = (double)4 / 5 * Math.Sin(((coef * 15) * Math.PI) / 180);
-
-            //int numOfPlayers = (int)(serv.PlayersCount / ((float)(2 / 3.0) * Math.Sin(x) + 1));
             int numOfPlayers = (int)(numplayers / ((float)(2 / 3.0) * Math.Sin(x) + 1));
             start = new DateTime(start.Year, start.Month, start.Day, start.Hour, 0, 0);
             List<PlayersTime> playersTimes = new List<PlayersTime>();
