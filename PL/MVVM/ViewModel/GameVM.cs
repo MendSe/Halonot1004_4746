@@ -36,43 +36,23 @@ namespace PL.MVVM.ViewModel
         }
         public async void DeleteGame()
         {
+            if (SelectedIndex < 0 || SelectedIndex >= games.Count) return;
+
             await myBL.DeleteGame(games[SelectedIndex]);
             MessageBox.Show("Game removed successfully from the Catalogue", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
-            games = new ObservableCollection<Games>(myBL.GetGames());
-            OnPropertyChanged(nameof(games));
+            ImageCollection.RemoveAt(SelectedIndex);
+            games.RemoveAt(SelectedIndex);
 
-            ImageCollection.Clear();
-            foreach (var game in games)
+            if (SelectedIndex >= games.Count)
             {
-                ImageCollection.Add(new CarouselModel(game));
+                SelectedIndex = games.Count - 1;
             }
-            OnPropertyChanged(nameof(ImageCollection));
-            OnPropertyChanged(nameof(CurrentDescription));
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        private ObservableCollection<CarouselModel> _imageCollection = new ObservableCollection<CarouselModel>();
 
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public GameVM()
-        {
-            myBL = new BL.BL();
-            games = new ObservableCollection<Games>(myBL.GetGames());
-           
-            foreach(var game in games)
-            {
-                ImageCollection.Add(new CarouselModel(game));
-            }
-
-
-        }
-        private List<CarouselModel> _imageCollection = new List<CarouselModel>();
-
-        public List<CarouselModel> ImageCollection
+        public ObservableCollection<CarouselModel> ImageCollection
         {
             get { return _imageCollection; }
             set { _imageCollection = value; }
@@ -92,6 +72,26 @@ namespace PL.MVVM.ViewModel
             }
         }
 
+
+        public GameVM()
+        {
+            myBL = new BL.BL();
+            games = new ObservableCollection<Games>(myBL.GetGames());
+           
+            foreach(var game in games)
+            {
+                ImageCollection.Add(new CarouselModel(game));
+            }
+
+
+        }
+        
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
     public class CarouselModel
     {
