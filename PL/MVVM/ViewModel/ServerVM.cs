@@ -63,7 +63,7 @@ namespace PL.MVVM.ViewModel
         public ServerVM()
         {
             myBL = new BL.BL();
-            ChartSeries = new SeriesCollection { new ColumnSeries {  Values = new ChartValues<double>() } };
+            ChartSeries = new SeriesCollection { new ColumnSeries {Values = new ChartValues<double>() } };
             ChartLabels = new ObservableCollection<string>();
         }
 
