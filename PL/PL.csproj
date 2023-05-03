@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\Analyze.png" />
     <None Remove="images\CS.jpg" />
     <None Remove="images\Elden.jpg" />
     <None Remove="images\GameBack.png" />
@@ -35,6 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="images\Analyze.png" />
     <Resource Include="images\CS.jpg" />
     <Resource Include="images\Elden.jpg" />
     <Resource Include="images\GameBack.png">

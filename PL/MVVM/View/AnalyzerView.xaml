@@ -9,14 +9,14 @@
              xmlns:geared="clr-namespace:LiveCharts.Geared;assembly=LiveCharts.Geared"
               xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
-             Background="Black"
              d:DesignHeight="500" d:DesignWidth="850">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-
+        
+        <Image Source="pack://application:,,,/PL;component/images/Analyze.png" Stretch="UniformToFill" Margin="0,0,0,2" Grid.RowSpan="2"/>
         <!-- Higher Grid -->
         <Grid>
             <DatePicker SelectedDate="{Binding StartDate}" Height="39" Margin="26,101,681,0" Foreground="White" FontSize="18"  FontFamily="Cascadia Code" VerticalAlignment="Top"/>
@@ -51,8 +51,8 @@
         <!-- Lower Grid -->
         <Grid Grid.Row="1">
 
-            <xctk:DateTimePicker Value="{Binding PredictDate}" Margin="57,41,491,155" RenderTransformOrigin="0.501,0.684" FontSize="14" FontFamily="Cascadia Code" Foreground="White" Background="Black"/>
-            <Button Content="Predict" Margin="542,33,166,0" VerticalAlignment="Top" Height="62" 
+            <xctk:DateTimePicker Value="{Binding PredictDate}" Margin="123,41,425,155" RenderTransformOrigin="0.501,0.684" FontSize="14" FontFamily="Cascadia Code" Foreground="White" Background="MediumPurple"/>
+            <Button Content="Predict" Margin="542,41,166,0" VerticalAlignment="Top" Height="62" 
                 Command="{Binding PredictCommand}" Foreground="White" FontSize="20" FontFamily="Cascadia Code" />
             <Label x:Name="ErrorPred" Content="Error in prediction date" HorizontalAlignment="Left" Margin="509,125,0,0" VerticalAlignment="Top" Width="208" Height="36"
                 Foreground="Red" FontSize="14" FontFamily="Cascadia Code" FontWeight="Bold" Visibility="{Binding ErrorMessagePredVisibility}"/>
