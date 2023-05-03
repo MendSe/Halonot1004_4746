@@ -31,7 +31,7 @@ namespace PL.MVVM.ViewModel
         public MenuVM()
         {
             ShowServerCommand = new RelayCommand(o => ShowServer());
-            //ShowAnalyzeCommand = new RelayCommand(o => ShowAnalyze());
+            ShowAnalyzeCommand = new RelayCommand(o => ShowAnalyze());
             ShowGamesCommand = new RelayCommand(o => ShowGames());
         }
         
@@ -39,11 +39,11 @@ namespace PL.MVVM.ViewModel
         {
             CurrentView = new ServerView();
         }
-        /*
+        
         private void ShowAnalyze()
         {
-            CurrentView = new AnalyzeControl();
-        }*/
+            CurrentView = new AnalyzerView();
+        }
 
         private void ShowGames()
         {

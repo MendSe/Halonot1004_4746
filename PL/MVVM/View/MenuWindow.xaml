@@ -95,7 +95,7 @@
                     Content="ANALYZE"
                     Click="Button_OnClick"
                     BorderBrush="Transparent"
-                    Command="{Binding solarSystemCommand}" Grid.Column="2"/>
+                    Command="{Binding ShowAnalyzeCommand}" Grid.Column="2"/>
                 
                 <Button
                     Style="{StaticResource CustomButton}"
