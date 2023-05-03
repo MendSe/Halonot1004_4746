@@ -57,19 +57,34 @@ namespace PL.MVVM.ViewModel
                 }
             }
         }
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public ServerVM()
         {
-            // Initialize the ChartSeries property
             myBL = new BL.BL();
-            ChartSeries = new SeriesCollection { new ColumnSeries { Title = "Your Data", Values = new ChartValues<double>() } };
+            ChartSeries = new SeriesCollection { new ColumnSeries {  Values = new ChartValues<double>() } };
             ChartLabels = new ObservableCollection<string>();
         }
+
+        /// <summary>
+        /// Load data that Load the data retrieved from the api to the differents object of the ServerView in both Health and Analyze tabs
+        /// </summary>
+        /// <param name="gameName"></param>
+        /// <param name="numOfDays"></param>
+        /// <param name="division"></param>
+        /// <returns></returns>
         public async Task LoadData(string gameName = null, int numOfDays = 30, int division = 23)
         {
             CurrentServer = await myBL.RetrieveServerFromApiAsync(gameName);
             LoadChartData(CurrentServer.PlayersCount);
         }
-
+        /// <summary>
+        /// function to Load the graph according to number of players retrieved from api and emulate function in the bl
+        /// </summary>
+        /// <param name="numplayers"></param>
+        /// <param name="numOfDays"></param>
+        /// <param name="division"></param>
         public async void LoadChartData(int numplayers,int numOfDays=30,int division=23)
         {
             // Retrieve the data for the given gameName

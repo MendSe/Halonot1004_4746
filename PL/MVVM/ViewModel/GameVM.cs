@@ -18,8 +18,10 @@ namespace PL.MVVM.ViewModel
     public class GameVM : INotifyPropertyChanged
     {
         private BL.IBL myBL;
+        /// <summary>
+        /// observable collection to handle the games data
+        /// </summary>
         public ObservableCollection<Games> games { get; set; }
-        //public ObservableCollection<ImageSource> CarouselImages { get; set; }
         private int _selectedIndex;
         public int SelectedIndex
         {
@@ -34,6 +36,9 @@ namespace PL.MVVM.ViewModel
                 }
             }
         }
+        /// <summary>
+        /// delete game when pressing the button by sending to the Bl the game to delete 
+        /// </summary>
         public async void DeleteGame()
         {
             if (SelectedIndex < 0 || SelectedIndex >= games.Count) return;
@@ -57,6 +62,9 @@ namespace PL.MVVM.ViewModel
             get { return _imageCollection; }
             set { _imageCollection = value; }
         }
+        /// <summary>
+        /// Current description to display the description of the selected game in the carousel binded in the View
+        /// </summary>
         public string CurrentDescription
         {
             get
@@ -72,7 +80,9 @@ namespace PL.MVVM.ViewModel
             }
         }
 
-
+        /// <summary>
+        /// contructor
+        /// </summary>
         public GameVM()
         {
             myBL = new BL.BL();
@@ -93,6 +103,9 @@ namespace PL.MVVM.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+    /// <summary>
+    /// Carousel class to handle the carousel of syncfusion
+    /// </summary>
     public class CarouselModel
     {
         public CarouselModel(Games game)

@@ -24,6 +24,9 @@ namespace PL.MVVM.ViewModel
             }
         }
 
+        /// <summary>
+        /// commands to display the different pages in the View model in the control content and to switch from a page to another
+        /// </summary>
         public ICommand ShowServerCommand { get; set; }
         public ICommand ShowAnalyzeCommand { get; set; }
         public ICommand ShowGamesCommand { get; set; }

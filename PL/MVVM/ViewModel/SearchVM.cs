@@ -34,11 +34,19 @@ namespace PL.MVVM.ViewModel
             myBL = new BL.BL();
             GameList = new ObservableCollection<Games>();
         }
+        /// <summary>
+        /// Search function to retrieve and display games from the igdb api
+        /// </summary>
+        /// <param name="gameName"></param>
         public async void Search(string gameName)
         {
             games = await myBL.RetrieveGamesFromApiAsync(gameName);
             GameList = new ObservableCollection<Games>(games);
         }
+        /// <summary>
+        /// save game to save a game in the database in order to be displayed in the carousel of GameView
+        /// </summary>
+        /// <param name="GameName"></param>
         public async void SaveGame(string GameName)
         {
             foreach(Games game in games)

@@ -17,6 +17,9 @@ namespace PL.MVVM.ViewModel
     public class AnalyzerVM : INotifyPropertyChanged
     {
         private BL.IBL myBL;
+        /// <summary>
+        /// variables to handle the datas
+        /// </summary>
         List<PlayersTime> playersTimes;
         private DateTime _startDate;
         private DateTime _endDate;
@@ -106,9 +109,14 @@ namespace PL.MVVM.ViewModel
                 OnPropertyChanged();
             }
         }
+        /// <summary>
+        /// Command to relay the command from the update button to the FillGraph function 
+        /// </summary>
         public ICommand UpdateGraphCommand { get; }
         public ICommand PredictCommand { get; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         private SeriesCollection _chartSeries;
         public SeriesCollection ChartSeries
         {
@@ -138,6 +146,10 @@ namespace PL.MVVM.ViewModel
             ErrorMessageVisibility = Visibility.Hidden;
             ErrorMessagePredVisibility = Visibility.Hidden;
         }
+        /// <summary>
+        /// function to fill the graph by retriving datas from the bl (api and function to emulate the data)
+        /// and making the 3 number percentage with a sum of 100
+        /// </summary>
         private async void FillGraph()
         {
             if ((StartDate.Year >= EndDate.Year && StartDate.Month >= EndDate.Month && StartDate.Day >= EndDate.Day) || EndDate > DateTime.Now)
@@ -172,9 +184,6 @@ namespace PL.MVVM.ViewModel
 
 
             
-            // Call your BL function to get the values
-
-            // Assuming you have already set up the ChartSeries in your ViewModel
             ChartSeries[0].Values.Clear();
             ChartSeries[0].Values.Add(low);
 
