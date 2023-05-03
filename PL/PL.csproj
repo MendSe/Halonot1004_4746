@@ -16,6 +16,7 @@
     <None Remove="images\meats.png" />
     <None Remove="images\PUBG.jpg" />
     <None Remove="images\ServerBBackground.png" />
+    <None Remove="images\TabAnalyze.png" />
     <None Remove="images\TabHealth.png" />
     <None Remove="images\Worms.jpg" />
   </ItemGroup>
@@ -44,6 +45,7 @@
     <Resource Include="images\meats.png" />
     <Resource Include="images\PUBG.jpg" />
     <Resource Include="images\ServerBBackground.png" />
+    <Resource Include="images\TabAnalyze.png" />
     <Resource Include="images\TabHealth.png" />
     <Resource Include="images\Worms.jpg" />
   </ItemGroup>

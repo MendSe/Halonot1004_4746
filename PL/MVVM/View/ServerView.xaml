@@ -111,6 +111,7 @@
                                 <ColumnDefinition Width="129*"/>
                                 <ColumnDefinition Width="41*"/>
                             </Grid.ColumnDefinitions>
+                            <Image Source="pack://application:,,,/PL;component/images/TabAnalyze.png" Stretch="UniformToFill" Grid.ColumnSpan="2" Margin="-1,0,0,0"/>
                             <lc:CartesianChart Grid.ColumnSpan="2" Margin="10,18,162,40">
                                 <lc:CartesianChart.Series>
                                     <lc:ColumnSeries Title="{Binding ChartSeries[0].Title}" Values="{Binding ChartSeries[0].Values}" />
